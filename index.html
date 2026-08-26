@@ -1,54 +1,230 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./src/output.css" rel="stylesheet">
-<!-- Alpine.js para interactividad (Carrusel y Menú) -->
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="./src/output.css" rel="stylesheet" />
+        <!-- Alpine.js para interactividad (Carrusel y Menú) -->
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>
 
-</head>
+    <body class="antialiased selection:bg-brand-green selection:text-black">
+        <header
+            class="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5"
+            x-data="{ mobileMenuOpen: false }"
+        >
+            <div
+                class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between"
+            >
+                <!-- Logo -->
+                <div class="flex items-center gap-3 w-1/4">
+                    <a
+                        href="#inicio"
+                        class="flex items-center gap-2 focus:outline-none rounded-md"
+                    >
+                        <img
+                            src="./src/logo.png"
+                            alt="XTREME ART Logo"
+                            class="h-7 w-auto object-contain"
+                        />
+                        <span
+                            class="font-bold text-white tracking-tight hidden sm:block text-[15px]"
+                            >XTREME ART</span
+                        >
+                    </a>
+                </div>
 
-<body class="antialiased selection:bg-brand-green selection:text-black">
-  <header class="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5" x-data="{ mobileMenuOpen: false }">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            
-            <!-- Logo -->
-            <div class="flex items-center gap-3 w-1/4">
-                <a href="#inicio" class="flex items-center gap-2 focus:outline-none rounded-md">
-                    <img src="1000101953.png" alt="XTREME ART Logo" class="h-7 w-auto object-contain">
-                    <span class="font-bold text-white tracking-tight hidden sm:block text-[15px]">XTREME ART</span>
-                </a>
+                <!-- Navegación Central Desktop -->
+                <nav
+                    class="hidden md:flex items-center justify-center gap-8 w-2/4"
+                >
+                    <a
+                        href="#servicios"
+                        class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
+                        >Servicios</a
+                    >
+                    <a
+                        href="#soluciones"
+                        class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
+                        >Soluciones</a
+                    >
+                    <a
+                        href="#portafolio"
+                        class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
+                        >Portafolio</a
+                    >
+                    <a
+                        href="#contacto"
+                        class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
+                        >Contacto</a
+                    >
+                </nav>
+
+                <!-- Acciones Derecha -->
+                <div
+                    class="hidden md:flex items-center justify-end gap-5 w-1/4"
+                >
+                    <a
+                        href="#contacto"
+                        class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
+                        >Login</a
+                    >
+                    <a
+                        href="#contacto"
+                        class="text-[13px] font-medium bg-white text-black px-4 py-1.5 rounded-md hover:bg-gray-200 transition-colors"
+                    >
+                        Cotizar
+                    </a>
+                </div>
+
+                <!-- Hamburger Móvil -->
+                <button
+                    @click="mobileMenuOpen = !mobileMenuOpen"
+                    class="md:hidden text-gray-400 p-2"
+                >
+                    <svg
+                        class="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        ></path>
+                    </svg>
+                </button>
             </div>
 
-            <!-- Navegación Central Desktop -->
-            <nav class="hidden md:flex items-center justify-center gap-8 w-2/4">
-                <a href="#servicios" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Servicios</a>
-                <a href="#soluciones" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Soluciones</a>
-                <a href="#portafolio" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Portafolio</a>
-                <a href="#contacto" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Contacto</a>
-            </nav>
-
-            <!-- Acciones Derecha -->
-            <div class="hidden md:flex items-center justify-end gap-5 w-1/4">
-                <a href="#contacto" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Login</a>
-                <a href="#contacto" class="text-[13px] font-medium bg-white text-black px-4 py-1.5 rounded-md hover:bg-gray-200 transition-colors">
-                    Cotizar
-                </a>
+            <!-- Menú Móvil Desplegable -->
+            <div
+                x-show="mobileMenuOpen"
+                class="md:hidden bg-brand-panel border-b border-white/10 px-6 py-4 space-y-4 absolute w-full"
+                style="display: none"
+            >
+                <a
+                    @click="mobileMenuOpen = false"
+                    href="#servicios"
+                    class="block text-sm font-medium text-gray-300"
+                    >Servicios</a
+                >
+                <a
+                    @click="mobileMenuOpen = false"
+                    href="#portafolio"
+                    class="block text-sm font-medium text-gray-300"
+                    >Portafolio</a
+                >
+                <a
+                    @click="mobileMenuOpen = false"
+                    href="#contacto"
+                    class="block text-sm text-center bg-brand-green text-black font-bold py-2 rounded-md mt-4"
+                    >Cotizar Ahora</a
+                >
             </div>
+        </header>
 
-            <!-- Hamburger Móvil -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-400 p-2">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </div>
+        <main id="inicio" class="flex-1 flex flex-col">
+            <section
+                class="relative pt-24 flex flex-col items-center justify-start min-h-[90vh] md:min-h-screen overflow-hidden"
+            >
+                <div
+                    class="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl mx-auto w-full mt-4"
+                >
+                    <!-- Titular Principal -->
+                    <h1
+                        class="text-[2.5rem] leading-[1.1] sm:text-6xl md:text-7xl lg:text-[5rem] font-bold tracking-tighter text-white mb-6"
+                    >
+                        La forma más rápida <br class="hidden sm:block" />
+                        de crear tu marca
+                    </h1>
 
-        <!-- Menú Móvil Desplegable -->
-        <div x-show="mobileMenuOpen" class="md:hidden bg-[#0A0A0A] border-b border-white/10 px-6 py-4 space-y-4 absolute w-full" style="display: none;">
-            <a @click="mobileMenuOpen = false" href="#servicios" class="block text-sm font-medium text-gray-300">Servicios</a>
-            <a @click="mobileMenuOpen = false" href="#portafolio" class="block text-sm font-medium text-gray-300">Portafolio</a>
-            <a @click="mobileMenuOpen = false" href="#contacto" class="block text-sm text-center bg-brand-green text-black font-bold py-2 rounded-md mt-4">Cotizar Ahora</a>
-        </div>
-    </header>
-</>
+                    <!-- Subtítulo -->
+                    <p
+                        class="text-base sm:text-lg md:text-[20px] text-brand-textMuted font-normal max-w-2xl mx-auto mb-10 leading-relaxed px-4"
+                    >
+                        Impresión de gran formato, diseño corporativo y
+                        rotulación arquitectónica. Todo el ecosistema de
+                        producción gráfica en un solo lugar.
+                    </p>
+                </div>
+              <div>
+                
+              </div>
+            </section>
+            <!-- ========================================== -->
+            <!-- SECCIÓN 2: MARQUEE TICKER (Integrado fluidamente) -->
+            <!-- ========================================== -->
+     <!--       <div
+                class="h-12 lg:h-14 bg-brand-green flex items-center overflow-hidden border-y border-[#111] relative z-20 shadow-[0_-10px_30px_rgba(147,227,43,0.1)]"
+            >
+                <div
+                    class="flex whitespace-nowrap animate-marquee items-center"
+                >
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >DISEÑO GRÁFICO</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >IMPRESIÓN GRAN FORMATO</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >ROTULACIÓN VEHICULAR</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >LETRAS 3D</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <!-- Loop -->
+                <!--    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >DISEÑO GRÁFICO</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >IMPRESIÓN GRAN FORMATO</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >ROTULACIÓN VEHICULAR</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                    <span
+                        class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
+                        >LETRAS 3D</span
+                    >
+                    <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+                </div> 
+            </div> -->
+        </main>
+        <!-- FOOTER -->
+        <footer
+            class="bg-[#000000] border-t border-white/5 py-8 px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4"
+        >
+            <div class="flex items-center gap-4">
+                <img
+                    src="./src/logo.png"
+                    alt="Logo XTREME ART"
+                    class="h-6 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all"
+                />
+            </div>
+            <p class="text-[11px] text-gray-600 font-medium">
+                © 2026 XTREME ART. Todos los derechos reservados.
+            </p>
+            <a
+                href="#inicio"
+                class="text-[11px] font-medium text-brand-green hover:text-white transition-colors"
+                >Subir ↑</a
+            >
+        </footer>
+    </body>
 </html>
