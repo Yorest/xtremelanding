@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./src/output.css" rel="stylesheet">
+<!-- Alpine.js para interactividad (Carrusel y Menú) -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+
+<body class="antialiased selection:bg-brand-green selection:text-black">
+  <header class="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <div class="flex items-center gap-3 w-1/4">
+                <a href="#inicio" class="flex items-center gap-2 focus:outline-none rounded-md">
+                    <img src="1000101953.png" alt="XTREME ART Logo" class="h-7 w-auto object-contain">
+                    <span class="font-bold text-white tracking-tight hidden sm:block text-[15px]">XTREME ART</span>
+                </a>
+            </div>
+
+            <!-- Navegación Central Desktop -->
+            <nav class="hidden md:flex items-center justify-center gap-8 w-2/4">
+                <a href="#servicios" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Servicios</a>
+                <a href="#soluciones" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Soluciones</a>
+                <a href="#portafolio" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Portafolio</a>
+                <a href="#contacto" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Contacto</a>
+            </nav>
+
+            <!-- Acciones Derecha -->
+            <div class="hidden md:flex items-center justify-end gap-5 w-1/4">
+                <a href="#contacto" class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Login</a>
+                <a href="#contacto" class="text-[13px] font-medium bg-white text-black px-4 py-1.5 rounded-md hover:bg-gray-200 transition-colors">
+                    Cotizar
+                </a>
+            </div>
+
+            <!-- Hamburger Móvil -->
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-gray-400 p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div x-show="mobileMenuOpen" class="md:hidden bg-[#0A0A0A] border-b border-white/10 px-6 py-4 space-y-4 absolute w-full" style="display: none;">
+            <a @click="mobileMenuOpen = false" href="#servicios" class="block text-sm font-medium text-gray-300">Servicios</a>
+            <a @click="mobileMenuOpen = false" href="#portafolio" class="block text-sm font-medium text-gray-300">Portafolio</a>
+            <a @click="mobileMenuOpen = false" href="#contacto" class="block text-sm text-center bg-brand-green text-black font-bold py-2 rounded-md mt-4">Cotizar Ahora</a>
+        </div>
+    </header>
+</>
+</html>
