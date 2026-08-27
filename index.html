@@ -8,7 +8,9 @@
         <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
 
-    <body class="antialiased selection:bg-brand-green selection:text-black max-w-7xl mx-auto">
+    <body
+        class="antialiased selection:bg-brand-green selection:text-black max-w-7xl mx-auto"
+    >
         <header
             class="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5"
             x-data="{ mobileMenuOpen: false }"
@@ -149,28 +151,32 @@
                         producción gráfica en un solo lugar.
                     </p>
                 </div>
-              <div class="md:mask-[url('./shape.svg')] md:mask-contain mask-no-repeat md:rounded-none md:h-134.5 w-full bg-brand-textMuted rounded-lg p-2">
-                <picture>
-<img
-sizes="(max-width: 1400px) 100vw, 1400px"
-srcset="
-bg-2_k6ryeh_c_scale,w_200.webp 200w,
-bg-2_k6ryeh_c_scale,w_525.webp 525w,
-bg-2_k6ryeh_c_scale,w_697.webp 697w,
-bg-2_k6ryeh_c_scale,w_917.webp 917w,
-bg-2_k6ryeh_c_scale,w_1102.webp 1102w,
-bg-2_k6ryeh_c_scale,w_1246.webp 1246w,
-bg-2_k6ryeh_c_scale,w_1387.webp 1387w,
-bg-2_k6ryeh_c_scale,w_1400.webp 1400w"
-src="bg-2_k6ryeh_c_scale,w_1400.webp"
-alt="">
-</picture>
-              </div>
+                <div
+                    class="md:mask-[url('./shape.svg')] md:mask-contain mask-no-repeat md:rounded-none md:h-134.5 w-full bg-brand-textMuted rounded-lg p-2"
+                >
+                    <picture>
+                        <img
+                            sizes="(max-width: 1400px) 100vw, 1400px"
+                            srcset="
+                                bg-2_k6ryeh_c_scale,w_200.webp   200w,
+                                bg-2_k6ryeh_c_scale,w_525.webp   525w,
+                                bg-2_k6ryeh_c_scale,w_697.webp   697w,
+                                bg-2_k6ryeh_c_scale,w_917.webp   917w,
+                                bg-2_k6ryeh_c_scale,w_1102.webp 1102w,
+                                bg-2_k6ryeh_c_scale,w_1246.webp 1246w,
+                                bg-2_k6ryeh_c_scale,w_1387.webp 1387w,
+                                bg-2_k6ryeh_c_scale,w_1400.webp 1400w
+                            "
+                            src="bg-2_k6ryeh_c_scale,w_1400.webp"
+                            alt=""
+                        />
+                    </picture>
+                </div>
             </section>
             <!-- ========================================== -->
             <!-- SECCIÓN 2: MARQUEE TICKER (Integrado fluidamente) -->
             <!-- ========================================== -->
-     <!--       <div
+            <!--       <div
                 class="h-12 lg:h-14 bg-brand-green flex items-center overflow-hidden border-y border-[#111] relative z-20 shadow-[0_-10px_30px_rgba(147,227,43,0.1)]"
             >
                 <div
@@ -197,7 +203,7 @@ alt="">
                     >
                     <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
                     <!-- Loop -->
-                <!--    <span
+            <!--    <span
                         class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
                         >DISEÑO GRÁFICO</span
                     >
