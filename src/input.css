@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Goldman");
 @import "tailwindcss";
 
 @theme {
@@ -9,7 +10,7 @@
   --color-brand-green: #93e32b;
 
   /* Tus fuentes */
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: "Goldman", system-ui, sans-serif;
   --font-mono: "Space Grotesk", monospace;
 
   /* Tus animaciones */
@@ -40,7 +41,7 @@
     background: #0a0a0a;
   }
   ::-webkit-scrollbar-thumb {
-    background: #93e32b;
+    background: var(--color-brand-green);
     border-radius: 4px;
   }
 }
