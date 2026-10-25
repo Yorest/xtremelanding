@@ -1,23 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Goldman");
 @import "tailwindcss";
 
+/* ==========================================================================
+   TOKENS (Tailwind v4: variables del tema -> utilidades)
+   ========================================================================== */
 @theme {
-  /* Tus colores personalizados */
+  /* Colores de marca */
   --color-brand-black: #000000;
   --color-brand-panel: #0a0a0a;
-  --color-brand-border: #1C1C1C;
+  --color-brand-border: #1c1c1c;
   --color-brand-textMuted: #888888;
   --color-brand-green: #93e32b;
 
-  /* Tus fuentes */
+  /* Tipografías */
   --font-sans: "Goldman", system-ui, sans-serif;
   --font-mono: "Space Grotesk", monospace;
 
-  /* Tus animaciones */
+  /* Animaciones de marca (se usan como animate-marquee / animate-spin-slow) */
   --animate-marquee: marquee 25s linear infinite;
   --animate-spin-slow: spin 12s linear infinite;
 
-  /* Los keyframes van directamente aquí dentro */
   @keyframes marquee {
     0% {
       transform: translateX(0%);
@@ -27,24 +29,41 @@
     }
   }
 }
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
 @layer base {
   body {
     background-color: var(--color-brand-black);
     color: #ffffff;
     overflow-x: hidden;
   }
-  /* Custom Scrollbar */
+
+  /* Menú móvil: estado cerrado (antes era un style inline en el HTML).
+     El alto animado y el pointer-events los maneja Motion por style. */
+  #mobile-menu {
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Scrollbar personalizada */
   ::-webkit-scrollbar {
     width: 4px;
   }
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: var(--color-brand-panel);
   }
   ::-webkit-scrollbar-thumb {
     background: var(--color-brand-green);
     border-radius: 4px;
   }
 }
+
+/* ==========================================================================
+   COMPONENTES
+   ========================================================================== */
 @layer components {
   .card {
     background-color: var(--color-white);
@@ -52,5 +71,99 @@
     padding: --spacing(6);
     box-shadow: var(--shadow-xl);
   }
-  
+
+  /* ------------------------------------------------------------------------
+     INTRO / LOGO X
+     ------------------------------------------------------------------------ */
+  #intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: var(--color-brand-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  #intro-svg {
+    height: min(42vh, 300px);
+    width: auto;
+    aspect-ratio: 910 / 1086;
+    overflow: visible;
+    transform-origin: center;
+  }
+
+  /* Trazo que dibuja la X (pathLength=1 -> 0..1) */
+  #intro-x-outline {
+    fill: none;
+    stroke: var(--color-brand-green);
+    stroke-width: 7;
+    stroke-linejoin: miter;
+    stroke-linecap: butt;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    filter: drop-shadow(0 0 16px rgba(147, 227, 43, 0.6));
+  }
+
+  #intro-x-fill {
+    fill: var(--color-brand-green);
+    opacity: 0;
+  }
+
+  /* Bloquea el scroll mientras la intro está en pantalla */
+  body.intro-active {
+    overflow: hidden;
+    height: 100%;
+  }
+
+  /* ------------------------------------------------------------------------
+     HERO: entrada coordinada
+     Estado inicial oculto. La clase la pone el JS sólo si hay Motion
+     disponible, así sin JS el hero nunca se queda vacío.
+     ------------------------------------------------------------------------ */
+  .hero-anim-ready .hero-anim {
+    opacity: 0;
+  }
+
+  /* ------------------------------------------------------------------------
+     GALERÍA: Scrolling Image Reveal (reversible)
+     ------------------------------------------------------------------------ */
+  .gallery-card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: var(--color-brand-panel);
+    isolation: isolate;
+  }
+
+  .gallery-card .gallery-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: scale 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Estado inicial de la máscara: sólo con JS activo */
+  .reveal-ready .gallery-card .gallery-img {
+    transform: translateY(112%) scale(1.15);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .gallery-card:hover .gallery-img {
+      scale: 1.06;
+    }
+  }
+}
+
+/* ==========================================================================
+   SIN JAVASCRIPT
+   La intro y el estado oculto del hero dependen de JS: si está desactivado,
+   se muestra el sitio directamente.
+   ========================================================================== */
+@media (scripting: none) {
+  #intro {
+    display: none !important;
+  }
 }

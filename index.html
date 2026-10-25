@@ -25,58 +25,6 @@
   <link href="./src/output.css" rel="stylesheet" />
 
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-  <!-- Estilos de la animación de entrada (Logo X) -->
-  <style>
-    #intro {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    #intro-svg {
-      height: min(42vh, 300px);
-      width: auto;
-      aspect-ratio: 910 / 1086;
-      overflow: visible;
-      transform-origin: center;
-    }
-    #intro-x-outline {
-      fill: none;
-      stroke: #93e32b;
-      stroke-width: 7;
-      stroke-linejoin: miter;
-      stroke-linecap: butt;
-      stroke-dasharray: 1;
-      stroke-dashoffset: 1;
-      filter: drop-shadow(0 0 16px rgba(147, 227, 43, 0.6));
-    }
-    #intro-x-fill {
-      fill: #93e32b;
-      opacity: 0;
-    }
-    body.intro-active {
-      overflow: hidden;
-      height: 100%;
-    }
-    #main-title {
-      opacity: 0;
-    }
-  </style>
-  <noscript>
-    <style>
-      #intro {
-        display: none !important;
-      }
-      #main-title {
-        opacity: 1 !important;
-      }
-    </style>
-  </noscript>
 </head>
 
 <body id="top"
@@ -132,8 +80,7 @@
 
     <!-- Menú Móvil Desplegable -->
     <div id="mobile-menu"
-      class="md:hidden bg-brand-panel border-b border-white/10 px-6 py-4 space-y-4 absolute w-full overflow-hidden"
-      style="height: 0; opacity: 0; pointer-events: none">
+      class="md:hidden bg-brand-panel border-b border-white/10 px-6 py-4 space-y-4 absolute w-full overflow-hidden">
       <a href="#servicios" class="block text-sm font-medium text-gray-300">Servicios</a>
       <a href="#galeria" class="block text-sm font-medium text-gray-300">Galería</a>
       <a href="#contacto"
@@ -147,18 +94,19 @@
       class="relative pt-16 md:pt-24 flex flex-col items-center justify-start overflow-hidden mx-8 md:mx-16 lg:mx-24">
       <!-- 2. Capa de Texto (posicionada sobre la zona izquierda del SVG) -->
       <div class="w-full text-white flex flex-col justify-start">
-        <h1 id="main-title" class="text-[2.8rem] sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+        <h1 id="main-title"
+          class="hero-anim text-[2.8rem] sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
           Rotulación e Impresos<br />
           de <span class="text-brand-green">Alto Impacto</span>
         </h1>
-        <p class="text-[1vw] mt-2 text-gray-300">
+        <p id="hero-subtitle" class="hero-anim text-[1vw] mt-2 text-gray-300">
           Tu descripción aquí...
         </p>
       </div>
       <!-- Contenedor principal con relación de aspecto fija (ajusta a la proporción original de tu canvas) -->
       <div class="relative w-full aspect-video max-w-7xl mx-auto flex flex-col md:block">
         <!-- 1. SVG de Fondo completando el 100% del contenedor -->
-        <div class="absolute inset-0 w-full h-full">
+        <div class="hero-anim absolute inset-0 w-full h-full" id="hero-panel">
           <svg viewBox="0 0 3851 1660" preserveAspectRatio="none" class="w-full h-full text-brand-border fill-current">
             <path
               d="M125.6,144.6h2676.4c42.4,0,78.8-19.1,102.9-54l24.6-35.6c24.1-34.9,60.6-54,103-54h691.8c68.9,0,125.2,56.2,125.2,125.2v1407.4c0,68.9-56.2,125.2-125.2,125.2H1279.2c-45.9,0-85.2-22.7-108.3-62.3l-347-597.8c-23-39.7-62.4-62.3-108.3-62.3H125.6c-68.9,0-125.2-56.2-125.2-125.2V269.8c0-68.9,56.2-125.2,125.2-125.2Z" />
@@ -167,10 +115,10 @@
 
         <!-- 3. Imagen de la Van (posicionada sobre la zona derecha del SVG) -->
         <img id="hero-image" src="./src/Wrap.png" alt="Xtreme Art Van"
-          class="absolute right-[4%] bottom-[15%] w-[52%] h-auto object-contain z-20 pointer-events-none" />
+          class="hero-anim absolute right-[4%] bottom-[15%] w-[52%] h-auto object-contain z-20 pointer-events-none" />
         <!-- Controles de Carrusel y Miniaturas (Esquina Inferior Derecha) -->
-        <div
-          class="absolute -bottom-10 right-2 sm:bottom-3 md:bottom-4 md:right-4 lg:bottom-10 lg:right-10 z-20 flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-white/10">
+        <div id="hero-controls"
+          class="hero-anim absolute -bottom-10 right-2 sm:bottom-3 md:bottom-4 md:right-4 lg:bottom-10 lg:right-10 z-20 flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-white/10">
           <button id="prev-btn"
             class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-gray flex items-center justify-center text-white hover:bg-brand-green hover:text-black transition-colors cursor-pointer micro-interact">
             <i class="ph ph-caret-left text-lg"></i>
@@ -204,16 +152,16 @@
         </div>
 
         <!-- Tarjeta Negra con Dimensiones Fijas () -->
-        <div
-          class="hidden absolute sm:top-8 md:top-10 md:left-0 lg:top-10 lg:left-10 z-20 p-5 lg:p-6 rounded-tr-[32px] lg:rounded-[32px] w-[260px] h-[205px] sm:w-[280px] sm:h-[215px] sm:flex flex-col justify-between">
+        <div id="hero-card"
+          class="hero-anim hidden absolute sm:top-8 md:top-10 md:left-0 lg:top-10 lg:left-10 z-20 p-5 lg:p-6 rounded-tr-[32px] lg:rounded-[32px] w-[260px] h-[205px] sm:w-[280px] sm:h-[215px] sm:flex flex-col justify-between">
           <div>
-            <div id="card-code" class="text-3xl font-black tracking-tight mb-0.5">
+            <div id="card-code" class="hero-anim text-3xl font-black tracking-tight mb-0.5">
               C45
             </div>
-            <div id="card-subtitle" class="text-brand-green text-xs font-bold tracking-widest uppercase mb-2">
+            <div id="card-subtitle" class="hero-anim text-brand-green text-xs font-bold tracking-widest uppercase mb-2">
               PRO WRAP
             </div>
-            <p id="card-desc" class="text-gray-400 text-xs sm:text-sm leading-tight">
+            <p id="card-desc" class="hero-anim text-gray-400 text-xs sm:text-sm leading-tight">
               Servicio integral para vehículos comerciales.
               Rotulación de alta calidad.
             </p>
@@ -227,7 +175,7 @@
         </div>
       </div>
       <!-- Tarjeta Negra sm -->
-      <div class="sm:hidden w-full mt-8 z-20 lg:p-6 rounded-tr-[32px] flex flex-col justify-between">
+      <div id="hero-card-sm" class="hero-anim sm:hidden w-full mt-8 z-20 lg:p-6 rounded-tr-[32px] flex flex-col justify-between">
         <div>
           <div id="card-code-sm" class="text-3xl font-black tracking-tight mb-0.5">
             C45
@@ -425,60 +373,72 @@
     <!-- ========================================== -->
     <section id="galeria" class="scroll-mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
       <div class="grid gap-4">
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" />
-        </div>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
+            alt="Trabajo de rotulación de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
+            alt="Impresión de gran formato de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
+            alt="Diseño corporativo de XTREME ART" />
+        </figure>
       </div>
       <div class="grid gap-4">
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" />
-        </div>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
+            alt="Rotulación vehicular de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
+            alt="Letras 3D de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
+            alt="Vinilos decorativos de XTREME ART" />
+        </figure>
       </div>
       <div class="grid gap-4">
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="" />
-        </div>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
+            alt="Lonas publicitarias de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
+            alt="Carteles impresos de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
+            alt="Rotulación comercial de XTREME ART" />
+        </figure>
       </div>
       <div class="grid gap-4">
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="" />
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-base"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="" />
-        </div>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
+            alt="Stickers y adhesivos de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
+            alt="Cajas de luz de XTREME ART" />
+        </figure>
+        <figure class="gallery-card">
+          <img class="gallery-img" loading="lazy" decoding="async"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
+            alt="Wrap vehicular de XTREME ART" />
+        </figure>
       </div>
     </section>
 
@@ -542,7 +502,7 @@
   <script type="module">
             import {
                 animate,
-                spring
+                scroll
             } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
 
             // ==========================================
@@ -553,24 +513,137 @@
             const introOutline = document.getElementById("intro-x-outline");
             const introFill = document.getElementById("intro-x-fill");
 
-            const revealMainTitle = () => {
-                animate(
-                    "#main-title",
-                    { opacity: [0, 1], y: [30, 0] },
-                    { duration: 0.8, easing: spring() }
-                );
-            };
-
             const prefersReducedMotion =
                 window.matchMedia &&
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            // ==========================================
+            // HERO: entrada coordinada de los elementos
+            // Orden pensado como una sola toma:
+            //  1. titular → 2. bajada → 3. panel de fondo →
+            //  4. van → 5. tarjeta (+ líneas en cascada) → 6. controles
+            // Cada paso entra un poco antes de que el anterior termine
+            // (solape de ~0.1s) para que se lea como un solo movimiento.
+            // ==========================================
+            const HERO_EASE = [0.16, 1, 0.3, 1];
+
+            const hideHeroForIntro = () => {
+                document.documentElement.classList.add("hero-anim-ready");
+            };
+
+            const showHeroInstantly = () => {
+                document.documentElement.classList.remove("hero-anim-ready");
+            };
+
+            const playHeroIntro = () => {
+                const title = document.getElementById("main-title");
+                const subtitle = document.getElementById("hero-subtitle");
+                const panel = document.getElementById("hero-panel");
+                const van = document.getElementById("hero-image");
+                const card = document.getElementById("hero-card");
+                const cardSm = document.getElementById("hero-card-sm");
+                const controls = document.getElementById("hero-controls");
+                const thumbs = [
+                    ...document.querySelectorAll("#hero-controls .thumb-item")
+                ];
+                const cardLines = [
+                    document.getElementById("card-code"),
+                    document.getElementById("card-subtitle"),
+                    document.getElementById("card-desc")
+                ].filter(Boolean);
+
+                // 1. Titular: entra seco y con peso
+                if (title) {
+                    animate(
+                        title,
+                        { opacity: [0, 1], y: [34, 0] },
+                        { duration: 0.8, ease: HERO_EASE }
+                    );
+                }
+
+                // 2. Bajada: sigue al titular, más corta
+                if (subtitle) {
+                    animate(
+                        subtitle,
+                        { opacity: [0, 1], y: [16, 0] },
+                        { duration: 0.7, ease: HERO_EASE, delay: 0.1 }
+                    );
+                }
+
+                // 3. Panel de fondo: aparece mientras el titular termina
+                if (panel) {
+                    animate(
+                        panel,
+                        { opacity: [0, 1], scale: [0.965, 1] },
+                        { duration: 0.95, ease: HERO_EASE, delay: 0.18 }
+                    );
+                }
+
+                // 4. Van: entra desde abajo, es el foco de la composición
+                if (van) {
+                    animate(
+                        van,
+                        { opacity: [0, 1], y: [42, 0], scale: [0.94, 1] },
+                        { duration: 1.05, ease: HERO_EASE, delay: 0.34 }
+                    );
+                }
+
+                // 5. Tarjeta de datos: entra desde la izquierda...
+                if (card) {
+                    animate(
+                        card,
+                        { opacity: [0, 1], x: [-26, 0] },
+                        { duration: 0.75, ease: HERO_EASE, delay: 0.44 }
+                    );
+                }
+                // ...y su contenido en cascada, con la van ya asentada
+                cardLines.forEach((line, index) => {
+                    animate(
+                        line,
+                        { opacity: [0, 1], y: [10, 0] },
+                        {
+                            duration: 0.5,
+                            ease: HERO_EASE,
+                            delay: 0.56 + index * 0.07
+                        }
+                    );
+                });
+                if (cardSm) {
+                    animate(
+                        cardSm,
+                        { opacity: [0, 1], y: [16, 0] },
+                        { duration: 0.7, ease: HERO_EASE, delay: 0.5 }
+                    );
+                }
+
+                // 6. Controles del carrusel: cierran la entrada
+                if (controls) {
+                    animate(
+                        controls,
+                        { opacity: [0, 1], y: [16, 0] },
+                        { duration: 0.65, ease: HERO_EASE, delay: 0.62 }
+                    );
+                }
+                thumbs.forEach((thumb, index) => {
+                    // Sin opacity: las miniaturas usan opacity-50/100 para
+                    // marcar la activa, y un estilo inline lo rompería
+                    animate(
+                        thumb,
+                        { y: [10, 0], scale: [0.82, 1] },
+                        {
+                            duration: 0.55,
+                            ease: HERO_EASE,
+                            delay: 0.7 + index * 0.07
+                        }
+                    );
+                });
+            };
 
             const playIntro = async () => {
                 if (prefersReducedMotion || !intro) {
                     if (intro) intro.style.display = "none";
                     document.body.classList.remove("intro-active");
-                    const mainTitle = document.getElementById("main-title");
-                    if (mainTitle) mainTitle.style.opacity = "1";
+                    showHeroInstantly();
                     return;
                 }
 
@@ -596,7 +669,7 @@
                 ).finished;
 
                 // Fase 3: la X se agranda y sale del viewport revelando el sitio
-                await Promise.all([
+                const exit = Promise.all([
                     animate(
                         introSvg,
                         { scale: [1.05, 14], opacity: [1, 0] },
@@ -609,13 +682,80 @@
                     ).finished
                 ]);
 
+                // El hero arranca mientras la X termina de salir: cuando la
+                // cortina se abre del todo, los elementos ya están entrando
+                window.setTimeout(playHeroIntro, 260);
+
+                await exit;
+
                 intro.style.display = "none";
                 document.body.classList.remove("intro-active");
 
-                revealMainTitle();
+                // Red de seguridad: si algo falla, el hero nunca queda oculto
+                window.setTimeout(showHeroInstantly, 6000);
             };
 
+            if (!prefersReducedMotion) hideHeroForIntro();
+
             playIntro();
+
+            // ==========================================
+            // GALERÍA: Scrolling Image Reveal (reversible)
+            // El revelado va atado a la posición del scroll, no a un
+            // disparador de una sola vez:
+            //  · al bajar, la foto sube desde su marco y se asienta
+            //  · al subir, el revelado se invierte y la foto se vuelve a tapar
+            // ==========================================
+            const galleryColumns = [
+                ...document.querySelectorAll("#galeria > div")
+            ];
+
+            const galleryCards = [
+                ...document.querySelectorAll("#galeria .gallery-card")
+            ];
+
+            if (galleryCards.length && !prefersReducedMotion) {
+                // Estado inicial (máscara) solo con JS activo
+                document.documentElement.classList.add("reveal-ready");
+
+                galleryColumns.forEach((column, columnIndex) => {
+                    column
+                        .querySelectorAll(".gallery-card")
+                        .forEach(card => {
+                            const img = card.querySelector(".gallery-img");
+                            if (!img) return;
+
+                            // Dónde termina el revelado: las columnas de la
+                            // izquierda completan un poco antes (cascada sutil)
+                            const completeAt =
+                                0.82 - (columnIndex % 4) * 0.045;
+
+                            scroll(
+                                animate(
+                                    img,
+                                    {
+                                        y: ["112%", "0%"],
+                                        scale: [1.15, 1]
+                                    },
+                                    {
+                                        duration: 1,
+                                        ease: [0.16, 1, 0.3, 1]
+                                    }
+                                ),
+                                {
+                                    target: card,
+                                    // 0 = la foto asoma por abajo del viewport
+                                    // 1 = su centro llega al 82% de la pantalla
+                                    offset: [
+                                        "start end",
+                                        `center ${completeAt}`
+                                    ],
+                                    axis: "y"
+                                }
+                            );
+                        });
+                });
+            }
 
             const smoothScrollToTop = () => {
                 const start =
@@ -745,7 +885,6 @@
                         { duration: 0.45, easing: "ease-out" }
                     );
                 });
-                l;
 
                 serviceIndicator.textContent = `${String(activeServiceIndex + 1).padStart(2, "0")} / ${String(serviceSlides.length).padStart(2, "0")}`;
             }
