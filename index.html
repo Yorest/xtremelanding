@@ -225,16 +225,19 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- SECCIÓN 3: CARRUSEL DE SERVICIOS (Restaurado y Adaptado al Tema) -->
+    <!-- SECCIÓN 3: ÁREAS DE TRABAJO                     -->
+    <!-- Sticky horizontal scroll (scrollytelling):      -->
+    <!-- la sección se alarga y su hijo sticky se queda  -->
+    <!-- fijo mientras el scroll mueve la pista en X.    -->
     <!-- ========================================== -->
-    <section id="servicios"
-      class="scroll-mt-20 bg-brand-black border-b-4 border-brand-green rounded-xl relative mx-8 md:mx-16 lg:mx-24 mt-12">
+    <section id="servicios" data-hscroll
+      class="scroll-mt-16 bg-brand-black border-b-4 border-brand-green rounded-xl relative mx-4 md:mx-8 lg:mx-12 mt-6 flex flex-col">
       <div
         class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none">
       </div>
 
-      <div class="max-w-7xl mx-auto relative z-10">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+      <div class="hscroll-sticky z-10 py-4 md:py-6" data-hscroll-sticky>
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 px-6 md:px-10 mb-4 md:mb-6">
           <div>
             <span
               class="text-brand-green text-[11px] font-mono tracking-[0.2em] uppercase font-semibold block mb-3">Especialidades</span>
@@ -244,30 +247,19 @@
             </h2>
           </div>
 
-          <div class="flex items-center gap-4 mt-6 md:mt-0">
-            <button id="service-prev"
-              class="w-10 h-10 rounded-md border border-white/10 bg-brand-black flex items-center justify-center text-white hover:border-brand-green hover:text-brand-green transition-colors"
-              aria-label="Anterior">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
-              </svg>
-            </button>
-            <span id="service-indicator" class="text-[12px] font-mono text-gray-500 tracking-[0.2em]">01 / 03</span>
-            <button id="service-next"
-              class="w-10 h-10 rounded-md border border-white/10 bg-brand-black flex items-center justify-center text-white hover:border-brand-green hover:text-brand-green transition-colors"
-              aria-label="Siguiente">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
-              </svg>
-            </button>
+          <!-- Progreso del desplazamiento horizontal (sin botones) -->
+          <div class="flex items-center gap-4">
+            <div class="hscroll-progress">
+              <span data-hscroll-bar class="hscroll-progress-bar"></span>
+            </div>
+            <span data-hscroll-count class="text-[12px] font-mono text-gray-500 tracking-[0.2em]">01 / 03</span>
           </div>
         </div>
 
-        <div id="service-viewport"
-          class="relative overflow-hidden rounded-xl border border-white/5 bg-brand-black p-8 md:p-16 min-h-170 lg:min-h-100 shadow-2xl">
-          <div
-            class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-100"
-            data-slide="0">
+        <!-- Pista horizontal: swipe nativo en móvil, pin + traslación en desktop -->
+        <div data-hscroll-viewport class="hscroll-viewport overflow-x-auto overflow-y-hidden px-6 md:px-10 pb-2">
+          <div data-hscroll-track class="hscroll-track flex items-stretch gap-4 md:gap-6">
+          <div data-hscroll-panel class="hscroll-panel">
             <div class="lg:col-span-8 space-y-4">
               <div class="flex items-center gap-4">
                 <span
@@ -294,14 +286,11 @@
               </div> -->
             </div>
             <div class="lg:col-span-4 flex justify-start lg:justify-end">
-              <span
-                class="text-[8rem] md:text-[12rem] leading-none font-bold text-brand-border tracking-tighter">01</span>
+              <span class="hscroll-index">01</span>
             </div>
           </div>
 
-          <div
-            class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-0 pointer-events-none"
-            data-slide="1">
+          <div data-hscroll-panel class="hscroll-panel">
             <div class="lg:col-span-8 space-y-6">
               <div class="flex items-center gap-4">
                 <span
@@ -327,14 +316,11 @@
               </div> -->
             </div>
             <div class="lg:col-span-4 flex justify-start lg:justify-end">
-              <span
-                class="text-[8rem] md:text-[12rem] leading-none font-bold text-brand-border tracking-tighter">02</span>
+              <span class="hscroll-index">02</span>
             </div>
           </div>
 
-          <div
-            class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-0 pointer-events-none"
-            data-slide="2">
+          <div data-hscroll-panel class="hscroll-panel">
             <div class="lg:col-span-8 space-y-6">
               <div class="flex items-center gap-4">
                 <span
@@ -360,9 +346,9 @@
             </div> -->
             </div>
             <div class="lg:col-span-4 flex justify-start lg:justify-end">
-              <span
-                class="text-[8rem] md:text-[12rem] leading-none font-bold text-brand-border tracking-tighter">03</span>
+              <span class="hscroll-index">03</span>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -498,6 +484,11 @@
       class="text-[11px] font-medium text-brand-green hover:text-white transition-colors">Subir ↑</a>
   </footer>
 
+  <!-- GSAP + ScrollTrigger (pin horizontal) y Lenis (inercia de scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.11/dist/lenis.min.js"></script>
+
   <!-- Integración de Framer (Motion One) y Lógica de Carrusel Interactivo/Automático -->
   <script type="module">
             import {
@@ -516,6 +507,67 @@
             const prefersReducedMotion =
                 window.matchMedia &&
                 window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            // ==========================================
+            // SCROLL GLOBAL: Lenis (inercia) + GSAP ScrollTrigger
+            // Lenis mueve el scroll con lerp (inercia cinemática) y avisa a
+            // ScrollTrigger en cada frame para que el pin vaya sincronizado.
+            // ==========================================
+            const gsap = window.gsap;
+            const ScrollTrigger = window.ScrollTrigger;
+            const Lenis = window.Lenis;
+            let lenis = null;
+
+            if (!prefersReducedMotion && Lenis) {
+                lenis = new Lenis({
+                    lerp: 0.085, // inercia: más bajo = más suave/lento
+                    wheelMultiplier: 1,
+                    smoothWheel: true,
+                    syncTouch: false, // en táctil manda el scroll nativo
+                    touchMultiplier: 1.6,
+                    autoRaf: false // lo mueve el ticker de GSAP
+                });
+
+                if (gsap && ScrollTrigger) {
+                    gsap.registerPlugin(ScrollTrigger);
+                    ScrollTrigger.config({ ignoreMobileResize: true });
+                    lenis.on("scroll", ScrollTrigger.update);
+                    gsap.ticker.add(time => lenis.raf(time * 1000));
+                    gsap.ticker.lagSmoothing(0);
+                    // Recalcular medidas al terminar de cargar fuentes/imágenes
+                    window.addEventListener("load", () =>
+                        ScrollTrigger.refresh()
+                    );
+                } else {
+                    // Sin GSAP, al menos conservamos la inercia
+                    const raf = time => {
+                        lenis.raf(time);
+                        requestAnimationFrame(raf);
+                    };
+                    requestAnimationFrame(raf);
+                }
+            }
+
+            // Anclas internas (#servicios, #galeria, #top…) con la inercia de
+            // Lenis. El offset -64 compensa el header fijo (h-16 = 64px).
+            if (lenis) {
+                document.querySelectorAll('a[href^="#"]').forEach(link => {
+                    link.addEventListener("click", event => {
+                        const href = link.getAttribute("href");
+                        if (!href || href === "#") return;
+
+                        const toTop = href === "#top" || href === "#inicio";
+                        const target = document.querySelector(href);
+                        if (!toTop && !target) return;
+
+                        event.preventDefault();
+                        lenis.scrollTo(toTop ? 0 : target, {
+                            offset: toTop ? 0 : -64,
+                            duration: 1.4
+                        });
+                    });
+                });
+            }
 
             // ==========================================
             // HERO: entrada coordinada de los elementos
@@ -648,6 +700,8 @@
                 }
 
                 document.body.classList.add("intro-active");
+                // Congelamos la inercia mientras la intro está en pantalla
+                if (lenis) lenis.stop();
 
                 // Fase 1: las líneas verdes dibujan el contorno de la X
                 await animate(
@@ -690,6 +744,10 @@
 
                 intro.style.display = "none";
                 document.body.classList.remove("intro-active");
+
+                // Devolvemos el control del scroll y recalculamos el pin
+                if (lenis) lenis.start();
+                if (ScrollTrigger) ScrollTrigger.refresh();
 
                 // Red de seguridad: si algo falla, el hero nunca queda oculto
                 window.setTimeout(showHeroInstantly, 6000);
@@ -757,38 +815,8 @@
                 });
             }
 
-            const smoothScrollToTop = () => {
-                const start =
-                    window.scrollY || document.documentElement.scrollTop || 0;
-                const duration = 700;
-                const startTime = performance.now();
-
-                const animateScroll = now => {
-                    const progress = Math.min((now - startTime) / duration, 1);
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    window.scrollTo(0, start + (0 - start) * eased);
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animateScroll);
-                    }
-                };
-
-                requestAnimationFrame(animateScroll);
-            };
-
-            const backToTopLinks = document.querySelectorAll(
-                'a[href="#top"], a[data-back-to-top], a[href="#inicio"]'
-            );
-
-            backToTopLinks.forEach(link => {
-                link.addEventListener("click", event => {
-                    const href = link.getAttribute("href");
-                    if (href === "#top" || href === "#inicio") {
-                        event.preventDefault();
-                        smoothScrollToTop();
-                    }
-                });
-            });
+            // Las anclas internas (#servicios, #galeria, #top…) las gestiona
+            // Lenis (opción `anchors`); sin Lenis acta el scroll suave nativo.
 
             // Microinteracciones de botones estilo Framer
             const interactables = document.querySelectorAll(".micro-interact");
@@ -858,43 +886,169 @@
                 link.addEventListener("click", closeMobileMenu);
             });
 
-            // Carrusel de servicios con Motion
-            const serviceSlides = [
-                ...document.querySelectorAll(".service-slide")
-            ];
-            const servicePrev = document.getElementById("service-prev");
-            const serviceNext = document.getElementById("service-next");
-            const serviceIndicator =
-                document.getElementById("service-indicator");
-            let activeServiceIndex = 0;
+            // ==========================================
+            // ÁREAS DE TRABAJO: sticky horizontal scroll
+            // Scrollytelling: la sección se alarga el recorrido horizontal
+            // y su hijo sticky se queda fijo en pantalla mientras el
+            // progreso del scroll desplaza la pista en X y enfoca la
+            // tarjeta activa (capítulos).
+            // Sin GSAP / reduced-motion queda el carrusel nativo con snap.
+            // ==========================================
+            const hscrollSection = document.querySelector("[data-hscroll]");
 
-            function renderServiceSlide(index) {
-                activeServiceIndex =
-                    (index + serviceSlides.length) % serviceSlides.length;
+            if (gsap && ScrollTrigger && hscrollSection && !prefersReducedMotion) {
+                const hscrollTrack = hscrollSection.querySelector(
+                    "[data-hscroll-track]"
+                );
+                const hscrollViewport = hscrollSection.querySelector(
+                    "[data-hscroll-viewport]"
+                );
+                const hscrollBar = hscrollSection.querySelector(
+                    "[data-hscroll-bar]"
+                );
+                const hscrollCount = hscrollSection.querySelector(
+                    "[data-hscroll-count]"
+                );
+                const hscrollPanels = [
+                    ...hscrollSection.querySelectorAll("[data-hscroll-panel]")
+                ];
 
-                serviceSlides.forEach((slide, slideIndex) => {
-                    const isActive = slideIndex === activeServiceIndex;
-                    slide.style.pointerEvents = isActive ? "auto" : "none";
+                // En táctil acortamos el recorrido (menos scroll "eterno")
+                const hscrollRunFactor = window.matchMedia(
+                    "(pointer: coarse)"
+                ).matches
+                    ? 0.8
+                    : 1;
 
-                    animate(
-                        slide,
-                        {
-                            opacity: isActive ? [0, 1] : [1, 0],
-                            x: isActive ? [18, 0] : [0, -18]
-                        },
-                        { duration: 0.45, easing: "ease-out" }
+                // Activa el modo sticky (alto extra + hijo pegado)
+                document.documentElement.classList.add("hscroll-active");
+
+                // Recorrido real medido desde el layout (no depende de
+                // `scrollWidth`, que cambia según el overflow del viewport)
+                const hscrollDistance = () => {
+                    const viewportStyle =
+                        window.getComputedStyle(hscrollViewport);
+                    const padLeft = parseFloat(viewportStyle.paddingLeft) || 0;
+                    const padRight =
+                        parseFloat(viewportStyle.paddingRight) || 0;
+                    const gap =
+                        parseFloat(
+                            window.getComputedStyle(hscrollTrack).columnGap
+                        ) || 0;
+                    const panelsWidth = hscrollPanels.reduce(
+                        (total, panel) => total + panel.offsetWidth,
+                        0
                     );
+                    const contentWidth =
+                        panelsWidth +
+                        gap * Math.max(0, hscrollPanels.length - 1);
+
+                    return Math.max(
+                        0,
+                        Math.round(
+                            padLeft +
+                                contentWidth +
+                                padRight -
+                                hscrollViewport.clientWidth
+                        )
+                    );
+                };
+
+                const padTwo = value => String(value).padStart(2, "0");
+
+                // Escritura directa del transform (sin crear tweens por frame)
+                const setTrackX = gsap.quickSetter(hscrollTrack, "x", "px");
+                const setBarScale = hscrollBar
+                    ? gsap.quickSetter(hscrollBar, "scaleX")
+                    : null;
+
+                // El alto extra de la sección = recorrido horizontal
+                const setRunLength = () => {
+                    hscrollSection.style.setProperty(
+                        "--hscroll-run",
+                        `${Math.round(hscrollDistance() * hscrollRunFactor)}px`
+                    );
+                };
+
+                // Progreso 0..1 -> desplazamiento lateral + capítulo activo
+                const updateHscrollUi = progress => {
+                    const p = Math.min(1, Math.max(0, progress || 0));
+                    const steps = Math.max(1, hscrollPanels.length - 1);
+
+                    setTrackX(-hscrollDistance() * p);
+
+                    if (setBarScale) {
+                        setBarScale(Math.max(0.03, p));
+                    }
+
+                    if (hscrollCount) {
+                        const index = Math.min(
+                            hscrollPanels.length - 1,
+                            Math.round(p * steps)
+                        );
+                        hscrollCount.textContent = `${padTwo(index + 1)} / ${padTwo(hscrollPanels.length)}`;
+                    }
+
+                    // La tarjeta centrada se destaca, el resto se atenúa
+                    hscrollPanels.forEach((panel, index) => {
+                        const focus =
+                            1 - Math.min(1, Math.abs(p * steps - index));
+                        gsap.set(panel, {
+                            opacity: 0.4 + 0.6 * focus,
+                            scale: 0.96 + 0.04 * focus
+                        });
+                    });
+                };
+
+                // En táctil el progreso se lee del scroll nativo de la pista
+                // (sólo cuando el modo sticky NO está activo)
+                hscrollViewport.addEventListener(
+                    "scroll",
+                    () => {
+                        if (
+                            document.documentElement.classList.contains(
+                                "hscroll-active"
+                            )
+                        ) {
+                            return;
+                        }
+                        const max = hscrollDistance();
+                        updateHscrollUi(
+                            max > 0 ? hscrollViewport.scrollLeft / max : 1
+                        );
+                    },
+                    { passive: true }
+                );
+
+                // 1) La sección crece justo el recorrido horizontal
+                setRunLength();
+
+                // 2) ScrollTrigger sólo mide el progreso (sin pin: el
+                //    "pin" real lo hace position: sticky)
+                const hscrollTrigger = ScrollTrigger.create({
+                    trigger: hscrollSection,
+                    start: "top 64px",
+                    end: "bottom bottom",
+                    invalidateOnRefresh: true,
+                    onUpdate: self => updateHscrollUi(self.progress),
+                    onRefresh: self => {
+                        setRunLength();
+                        updateHscrollUi(self.progress);
+                    }
                 });
 
-                serviceIndicator.textContent = `${String(activeServiceIndex + 1).padStart(2, "0")} / ${String(serviceSlides.length).padStart(2, "0")}`;
-            }
+                // Recalcula el alto extra antes de cada medición
+                ScrollTrigger.addEventListener("refreshInit", setRunLength);
 
-            servicePrev.addEventListener("click", () =>
-                renderServiceSlide(activeServiceIndex - 1)
-            );
-            serviceNext.addEventListener("click", () =>
-                renderServiceSlide(activeServiceIndex + 1)
-            );
+                updateHscrollUi(hscrollTrigger.progress);
+                requestAnimationFrame(() => ScrollTrigger.refresh());
+            } else if (hscrollSection && (!gsap || !ScrollTrigger)) {
+                // Sin GSAP el carrusel nativo sigue funcionando; avisamos
+                // para que sea evidente en consola por qué no hay pin
+                console.warn(
+                    "[Áreas de trabajo] GSAP/ScrollTrigger no está disponible: se usa el carrusel horizontal nativo."
+                );
+            }
 
             // Datos del Carrusel
             const slides = [

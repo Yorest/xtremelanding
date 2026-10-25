@@ -37,7 +37,10 @@
   body {
     background-color: var(--color-brand-black);
     color: #ffffff;
+    /* `clip` no crea contenedor de scroll: imprescindible para que
+       ScrollTrigger pueda fijar (pin) secciones sin saltos */
     overflow-x: hidden;
+    overflow-x: clip;
   }
 
   /* Menú móvil: estado cerrado (antes era un style inline en el HTML).
@@ -58,6 +61,31 @@
   ::-webkit-scrollbar-thumb {
     background: var(--color-brand-green);
     border-radius: 4px;
+  }
+
+  /* ------------------------------------------------------------------------
+     LENIS (scroll con inercia) — reglas oficiales de la librería
+     ------------------------------------------------------------------------ */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  /* Lenis controla el scroll: anulamos el smooth nativo del <html> */
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
   }
 }
 
@@ -124,6 +152,135 @@
      ------------------------------------------------------------------------ */
   .hero-anim-ready .hero-anim {
     opacity: 0;
+  }
+
+  /* ------------------------------------------------------------------------
+     ÁREAS DE TRABAJO: pista horizontal
+     Base = carrusel nativo con snap (móvil, sin JS y reduced-motion).
+     Con GSAP activo, `hscroll-pinned` anula el scroll nativo y pasa a
+     trasladar la pista según el scroll vertical.
+     La estructura vive aquí para no depender de utilidades generadas.
+     ------------------------------------------------------------------------ */
+  .hscroll-viewport {
+    padding-inline: 1.5rem;
+    padding-bottom: 0.5rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .hscroll-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* La pista mide el ancho del viewport; los paneles la desbordan y es
+     el viewport (contenedor de scroll) el que reporta el recorrido real */
+  .hscroll-track {
+    display: flex;
+    align-items: stretch;
+    gap: 1rem;
+    will-change: transform;
+  }
+
+  .hscroll-panel {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 260px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    scroll-snap-align: center;
+    border: 1px solid rgb(255 255 255 / 0.07);
+    border-radius: 0.75rem;
+    background-color: var(--color-brand-panel);
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+  }
+
+  /* Número decorativo de cada área */
+  .hscroll-index {
+    display: block;
+    font-size: 5rem;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: var(--color-brand-border);
+  }
+
+  /* Barra de progreso del desplazamiento horizontal */
+  .hscroll-progress {
+    position: relative;
+    height: 1px;
+    width: 6rem;
+    background-color: rgb(255 255 255 / 0.1);
+    overflow: hidden;
+  }
+
+  .hscroll-progress-bar {
+    position: absolute;
+    inset: 0;
+    transform: scaleX(0);
+    transform-origin: left center;
+    background-color: var(--color-brand-green);
+  }
+
+  @media (min-width: 768px) {
+    .hscroll-viewport {
+      padding-inline: 2.5rem;
+    }
+    .hscroll-track {
+      gap: 1.5rem;
+    }
+    .hscroll-panel {
+      min-height: 320px;
+      padding: 2.5rem;
+    }
+    .hscroll-index {
+      font-size: 8rem;
+    }
+    .hscroll-progress {
+      width: 10rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hscroll-panel {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    .hscroll-index {
+      font-size: 9rem;
+    }
+  }
+
+  /* Altura de viewport mientras está fijada (modo sticky activo) */
+  .hscroll-sticky {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  /* Modo scrollytelling activo (lo activa el JS cuando hay GSAP).
+     Sección alargada = recorrido horizontal; hijo sticky = "pin" nativo.
+     El punto de sticky es 64px = altura exacta del header fijo (h-16). */
+  .hscroll-active #servicios {
+    height: calc(100dvh - 64px + var(--hscroll-run, 0px));
+  }
+
+  .hscroll-active .hscroll-sticky {
+    position: sticky;
+    top: 64px;
+    height: calc(100dvh - 64px);
+  }
+
+  .hscroll-active .hscroll-viewport {
+    overflow-x: hidden;
+    scroll-snap-type: none;
   }
 
   /* ------------------------------------------------------------------------
