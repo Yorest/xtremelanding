@@ -1,978 +1,869 @@
 <!doctype html>
 <html lang="es" class="scroll-smooth motion-reduce:scroll-auto">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XTREME ART | Rotulación e Impresos</title>
 
-    <!-- Meta SEO -->
-    <meta
-      name="description"
-      content="Impresión de pequeño y gran formato, diseño corporativo y rotulación comercial y vehicular de máxima calidad."
-    />
-    <meta
-      name="keywords"
-      content="rotulación, impresión, diseño gráfico, branding, letras 3D, vinilos, lonas, carteles, rotulos, logos, stickers, adhesivos, wrap, rotulación vehicular"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XTREME ART | Rotulación e Impresos</title>
 
-    <meta name="author" content="XTREME ART" />
-    <meta name="robots" content="index, follow" />
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="XTREME ART | Rotulación e Impresos" />
-    <meta
-      property="og:description"
-      content="Impresión de pequeño y gran formato, diseño corporativo y rotulación comercial y vehicular de máxima calidad."
-    />
-    <meta property="og:image" content="./src/logo.png" />
-    <meta property="og:url" content="https://xtremeart.com" />
+  <!-- Meta SEO -->
+  <meta name="description"
+    content="Impresión de pequeño y gran formato, diseño corporativo y rotulación comercial y vehicular de máxima calidad." />
+  <meta name="keywords"
+    content="rotulación, impresión, diseño gráfico, branding, letras 3D, vinilos, lonas, carteles, rotulos, logos, stickers, adhesivos, wrap, rotulación vehicular, empastes, sellos" />
 
-    <link href="./src/output.css" rel="stylesheet" />
+  <meta name="author" content="XTREME ART" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="XTREME ART | Rotulación e Impresos" />
+  <meta property="og:description"
+    content="Impresión de pequeño y gran formato, diseño corporativo y rotulación comercial y vehicular de máxima calidad." />
+  <meta property="og:image" content="./src/logo.png" />
+  <meta property="og:url" content="https://xtremeart.com" />
 
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-  </head>
+  <link href="./src/output.css" rel="stylesheet" />
 
-  <body
-    id="top"
-    class="antialiased selection:bg-brand-green selection:text-black max-w-7xl mx-auto bg-top bg-size-[100vw] bg-no-repeat bg-[linear-grad"
-  >
-    <header
-      id="site-header"
-      class="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5"
-    >
-      <div
-        class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between md:px-16 lg:px-24"
-      >
-        <!-- Logo -->
-        <div class="flex items-center gap-3 w-1/4">
-          <a
-            href="#inicio"
-            class="flex items-center gap-2 focus:outline-none rounded-md"
-          >
-            <img
-              src="./src/logo.png"
-              alt="XTREME ART Logo"
-              class="h-7 w-auto object-contain"
-            />
-          </a>
-        </div>
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-        <!-- Navegación Central Desktop -->
-        <nav class="hidden md:flex items-center justify-center gap-8 w-2/4">
-          <a
-            href="#servicios"
-            class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
-            >Servicios</a
-          >
-          <a
-            href="#galeria"
-            class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
-            >Galería</a
-          >
-          <a
-            href="#contacto"
-            class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors"
-            >Contacto</a
-          >
-        </nav>
+  <!-- Estilos de la animación de entrada (Logo X) -->
+  <style>
+    #intro {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #intro-svg {
+      height: min(42vh, 300px);
+      width: auto;
+      aspect-ratio: 910 / 1086;
+      overflow: visible;
+      transform-origin: center;
+    }
+    #intro-x-outline {
+      fill: none;
+      stroke: #93e32b;
+      stroke-width: 7;
+      stroke-linejoin: miter;
+      stroke-linecap: butt;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+      filter: drop-shadow(0 0 16px rgba(147, 227, 43, 0.6));
+    }
+    #intro-x-fill {
+      fill: #93e32b;
+      opacity: 0;
+    }
+    body.intro-active {
+      overflow: hidden;
+      height: 100%;
+    }
+    #main-title {
+      opacity: 0;
+    }
+  </style>
+  <noscript>
+    <style>
+      #intro {
+        display: none !important;
+      }
+      #main-title {
+        opacity: 1 !important;
+      }
+    </style>
+  </noscript>
+</head>
 
-        <!-- Acciones Derecha -->
-        <div class="hidden md:flex items-center justify-end gap-5 w-1/4">
-          <a
-            href="#contacto"
-            class="text-[13px] font-medium bg-white text-black px-4 py-1.5 rounded-md hover:bg-gray-200 transition-colors"
-          >
-            Cotizar
-          </a>
-        </div>
+<body id="top"
+  class="antialiased selection:bg-brand-green selection:text-black max-w-7xl mx-auto bg-top bg-size-[100vw] bg-no-repeat bg-[linear-grad">
 
-        <!-- Hamburger Móvil -->
-        <button
-          id="menu-toggle"
-          class="md:hidden text-gray-400 p-2"
-          aria-expanded="false"
-          aria-label="Abrir menú"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
+  <!-- ========================================== -->
+  <!-- ANIMACIÓN DE ENTRADA (Logo X)              -->
+  <!-- ========================================== -->
+  <div id="intro" aria-hidden="true">
+    <svg id="intro-svg" viewBox="0 0 910 1086" xmlns="http://www.w3.org/2000/svg">
+      <!-- X característica del logotipo XTREME ART (trazada del logo original) -->
+      <path id="intro-x-fill"
+        d="M 658.992 265 C 521.374 410.750, 408.575 530, 408.329 530 C 408.083 530, 408.083 529.663, 408.330 529.250 C 408.576 528.837, 414.256 511.484, 420.952 490.687 L 433.127 452.875 428.528 446.187 C 425.998 442.509, 392.329 394.725, 353.706 340 L 283.484 240.500 190.633 240.245 C 114.998 240.037, 97.874 240.230, 98.279 241.284 C 98.552 241.995, 154.648 321.695, 222.936 418.393 C 291.225 515.092, 346.963 594.549, 346.798 594.964 C 346.634 595.379, 268.650 678.645, 173.500 780 C 78.350 881.355, 0.350 964.668, 0.167 965.141 C -0.018 965.617, 58.346 966, 131.167 966 L 262.501 966 353.224 869.537 L 443.948 773.075 410.365 725.419 L 376.782 677.764 384.250 670.132 C 388.358 665.934, 445.395 605.575, 510.999 536 C 576.603 466.425, 631.630 408.150, 633.280 406.500 C 634.931 404.850, 630.664 411.825, 623.797 422 C 616.931 432.175, 571.845 498.894, 523.606 570.264 C 468.516 651.771, 436.179 700.488, 436.652 701.264 C 437.066 701.944, 444.435 712.175, 453.028 724 C 477.002 756.991, 509.780 803.538, 564.996 883 C 624.051 967.987, 658.112 1016.343, 687.347 1056.704 L 708.500 1085.907 809.344 1085.954 L 910.188 1086 906.787 1081.250 C 904.916 1078.638, 839.962 986.275, 762.444 876 C 663.822 735.704, 621.516 674.749, 621.549 673 C 621.575 671.625, 686.082 520.650, 764.899 337.500 C 915.671 -12.859, 910.159 0, 909.579 0 C 909.375 0, 796.611 119.250, 658.992 265 Z" />
+      <path id="intro-x-outline" pathLength="1"
+        d="M 658.992 265 C 521.374 410.750, 408.575 530, 408.329 530 C 408.083 530, 408.083 529.663, 408.330 529.250 C 408.576 528.837, 414.256 511.484, 420.952 490.687 L 433.127 452.875 428.528 446.187 C 425.998 442.509, 392.329 394.725, 353.706 340 L 283.484 240.500 190.633 240.245 C 114.998 240.037, 97.874 240.230, 98.279 241.284 C 98.552 241.995, 154.648 321.695, 222.936 418.393 C 291.225 515.092, 346.963 594.549, 346.798 594.964 C 346.634 595.379, 268.650 678.645, 173.500 780 C 78.350 881.355, 0.350 964.668, 0.167 965.141 C -0.018 965.617, 58.346 966, 131.167 966 L 262.501 966 353.224 869.537 L 443.948 773.075 410.365 725.419 L 376.782 677.764 384.250 670.132 C 388.358 665.934, 445.395 605.575, 510.999 536 C 576.603 466.425, 631.630 408.150, 633.280 406.500 C 634.931 404.850, 630.664 411.825, 623.797 422 C 616.931 432.175, 571.845 498.894, 523.606 570.264 C 468.516 651.771, 436.179 700.488, 436.652 701.264 C 437.066 701.944, 444.435 712.175, 453.028 724 C 477.002 756.991, 509.780 803.538, 564.996 883 C 624.051 967.987, 658.112 1016.343, 687.347 1056.704 L 708.500 1085.907 809.344 1085.954 L 910.188 1086 906.787 1081.250 C 904.916 1078.638, 839.962 986.275, 762.444 876 C 663.822 735.704, 621.516 674.749, 621.549 673 C 621.575 671.625, 686.082 520.650, 764.899 337.500 C 915.671 -12.859, 910.159 0, 909.579 0 C 909.375 0, 796.611 119.250, 658.992 265 Z" />
+    </svg>
+  </div>
+
+  <header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-black/60 backdrop-blur-md border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between md:px-16 lg:px-24">
+      <!-- Logo -->
+      <div class="flex items-center gap-3 w-1/4">
+        <a href="#inicio" class="flex items-center gap-2 focus:outline-none rounded-md">
+          <img src="./src/logo.png" alt="XTREME ART Logo" class="h-7 w-auto object-contain" />
+        </a>
+      </div>
+
+      <!-- Navegación Central Desktop -->
+      <nav class="hidden md:flex items-center justify-center gap-8 w-2/4">
+        <a href="#servicios"
+          class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Servicios</a>
+        <a href="#galeria"
+          class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Galería</a>
+        <a href="#contacto"
+          class="text-[13px] font-medium text-brand-textMuted hover:text-white transition-colors">Contacto</a>
+      </nav>
+
+      <!-- Acciones Derecha -->
+      <div class="hidden md:flex items-center justify-end gap-5 w-1/4">
+        <a href="#contacto"
+          class="text-[13px] font-medium bg-white text-black px-4 py-1.5 rounded-md hover:bg-gray-200 transition-colors">
+          Cotizar
+        </a>
+      </div>
+
+      <!-- Hamburger Móvil -->
+      <button id="menu-toggle" class="md:hidden text-gray-400 p-2" aria-expanded="false" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú Móvil Desplegable -->
+    <div id="mobile-menu"
+      class="md:hidden bg-brand-panel border-b border-white/10 px-6 py-4 space-y-4 absolute w-full overflow-hidden"
+      style="height: 0; opacity: 0; pointer-events: none">
+      <a href="#servicios" class="block text-sm font-medium text-gray-300">Servicios</a>
+      <a href="#galeria" class="block text-sm font-medium text-gray-300">Galería</a>
+      <a href="#contacto"
+        class="block text-sm text-center bg-brand-green text-black font-bold py-2 rounded-md mt-4">Cotizar Ahora</a>
+    </div>
+  </header>
+
+  <main id="inicio"
+    class="flex-1 flex flex-col bg-black/55 bg-blend-darken bg-top bg-no-repeat bg-contain bg-[url(bg-2_k6ryeh_c_scale_w_525.webp)] md:bg-[url(bg-2_k6ryeh_c_scale_w_917.webp)] lg:bg-[url(bg-2_k6ryeh_c_scale_w_1102.webp)] xl:bg-[url(bg-2_k6ryeh_c_scale_w_1400.webp)]">
+    <section
+      class="relative pt-16 md:pt-24 flex flex-col items-center justify-start overflow-hidden mx-8 md:mx-16 lg:mx-24">
+      <!-- 2. Capa de Texto (posicionada sobre la zona izquierda del SVG) -->
+      <div class="w-full text-white flex flex-col justify-start">
+        <h1 id="main-title" class="text-[2.8rem] sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]">
+          Rotulación e Impresos<br />
+          de <span class="text-brand-green">Alto Impacto</span>
+        </h1>
+        <p class="text-[1vw] mt-2 text-gray-300">
+          Tu descripción aquí...
+        </p>
+      </div>
+      <!-- Contenedor principal con relación de aspecto fija (ajusta a la proporción original de tu canvas) -->
+      <div class="relative w-full aspect-video max-w-7xl mx-auto flex flex-col md:block">
+        <!-- 1. SVG de Fondo completando el 100% del contenedor -->
+        <div class="absolute inset-0 w-full h-full">
+          <svg viewBox="0 0 3851 1660" preserveAspectRatio="none" class="w-full h-full text-brand-border fill-current">
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
+              d="M125.6,144.6h2676.4c42.4,0,78.8-19.1,102.9-54l24.6-35.6c24.1-34.9,60.6-54,103-54h691.8c68.9,0,125.2,56.2,125.2,125.2v1407.4c0,68.9-56.2,125.2-125.2,125.2H1279.2c-45.9,0-85.2-22.7-108.3-62.3l-347-597.8c-23-39.7-62.4-62.3-108.3-62.3H125.6c-68.9,0-125.2-56.2-125.2-125.2V269.8c0-68.9,56.2-125.2,125.2-125.2Z" />
           </svg>
-        </button>
-      </div>
-
-      <!-- Menú Móvil Desplegable -->
-      <div
-        id="mobile-menu"
-        class="md:hidden bg-brand-panel border-b border-white/10 px-6 py-4 space-y-4 absolute w-full overflow-hidden"
-        style="height: 0; opacity: 0; pointer-events: none"
-      >
-        <a href="#servicios" class="block text-sm font-medium text-gray-300"
-          >Servicios</a
-        >
-        <a href="#galeria" class="block text-sm font-medium text-gray-300"
-          >Galería</a
-        >
-        <a
-          href="#contacto"
-          class="block text-sm text-center bg-brand-green text-black font-bold py-2 rounded-md mt-4"
-          >Cotizar Ahora</a
-        >
-      </div>
-    </header>
-
-    <main
-      id="inicio"
-      class="flex-1 flex flex-col bg-black/55 bg-blend-darken bg-top bg-no-repeat bg-contain bg-[url(bg-2_k6ryeh_c_scale_w_525.webp)] md:bg-[url(bg-2_k6ryeh_c_scale_w_917.webp)] lg:bg-[url(bg-2_k6ryeh_c_scale_w_1102.webp)] xl:bg-[url(bg-2_k6ryeh_c_scale_w_1400.webp)]"
-    >
-      <section
-        class="relative pt-16 md:pt-24 flex flex-col items-center justify-start overflow-hidden mx-8 md:mx-16 lg:mx-24"
-      >
-        <!-- 2. Capa de Texto (posicionada sobre la zona izquierda del SVG) -->
-        <div class="w-full text-white flex flex-col justify-start">
-          <h1
-            id="main-title"
-            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05]"
-          >
-            Rotulación e Impresos<br />
-            de <span class="text-brand-green">Alto Impacto</span>
-          </h1>
-          <p class="text-[1vw] mt-2 text-gray-300">Tu descripción aquí...</p>
         </div>
-        <!-- Contenedor principal con relación de aspecto fija (ajusta a la proporción original de tu canvas) -->
+
+        <!-- 3. Imagen de la Van (posicionada sobre la zona derecha del SVG) -->
+        <img id="hero-image" src="./src/Wrap.png" alt="Xtreme Art Van"
+          class="absolute right-[4%] bottom-[15%] w-[52%] h-auto object-contain z-20 pointer-events-none" />
+        <!-- Controles de Carrusel y Miniaturas (Esquina Inferior Derecha) -->
         <div
-          class="relative w-full aspect-video max-w-7xl mx-auto flex flex-col md:block"
-        >
-          <!-- 1. SVG de Fondo completando el 100% del contenedor -->
-          <div class="absolute inset-0 w-full h-full">
-            <svg
-              viewBox="0 0 3851 1660"
-              preserveAspectRatio="none"
-              class="w-full h-full text-brand-border fill-current"
-            >
-              <path
-                d="M125.6,144.6h2676.4c42.4,0,78.8-19.1,102.9-54l24.6-35.6c24.1-34.9,60.6-54,103-54h691.8c68.9,0,125.2,56.2,125.2,125.2v1407.4c0,68.9-56.2,125.2-125.2,125.2H1279.2c-45.9,0-85.2-22.7-108.3-62.3l-347-597.8c-23-39.7-62.4-62.3-108.3-62.3H125.6c-68.9,0-125.2-56.2-125.2-125.2V269.8c0-68.9,56.2-125.2,125.2-125.2Z"
-              />
-            </svg>
-          </div>
+          class="absolute -bottom-10 right-2 sm:bottom-3 md:bottom-4 md:right-4 lg:bottom-10 lg:right-10 z-20 flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-white/10">
+          <button id="prev-btn"
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-gray flex items-center justify-center text-white hover:bg-brand-green hover:text-black transition-colors cursor-pointer micro-interact">
+            <i class="ph ph-caret-left text-lg"></i>
+          </button>
 
-          <!-- 3. Imagen de la Van (posicionada sobre la zona derecha del SVG) -->
-          <img
-            id="hero-image"
-            src="./src/Wrap.png"
-            alt="Xtreme Art Van"
-            class="absolute right-[4%] bottom-[15%] w-[52%] h-auto object-contain z-20 pointer-events-none"
-          />
-          <!-- Controles de Carrusel y Miniaturas (Esquina Inferior Derecha) -->
-          <div
-            class="absolute -bottom-10 right-2 sm:bottom-3 md:bottom-4 md:right-4 lg:bottom-10 lg:right-10 z-20 flex items-center gap-2 sm:gap-3 bg-black/60 backdrop-blur-md p-2.5 sm:p-3 rounded-2xl border border-white/10"
-          >
-            <button
-              id="prev-btn"
-              class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-gray flex items-center justify-center text-white hover:bg-brand-green hover:text-black transition-colors cursor-pointer micro-interact"
-            >
-              <i class="ph ph-caret-left text-lg"></i>
-            </button>
-
-            <div class="flex items-center gap-1.5 sm:gap-2">
-              <div
-                onclick="window.setSlideManual(0)"
-                class="thumb-item w-10 h-8 sm:w-12 sm:h-10 rounded-lg overflow-hidden border-2 border-brand-green cursor-pointer opacity-100 transition-all shadow-md"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1554744512-d6c603f27c54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div
-                onclick="window.setSlideManual(1)"
-                class="thumb-item w-10 h-8 sm:w-12 sm:h-10 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer opacity-50 hover:opacity-100 transition-all shadow-md"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div
-                onclick="window.setSlideManual(2)"
-                class="thumb-item w-10 h-8 sm:w-12 sm:h-10 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer opacity-50 hover:opacity-100 transition-all shadow-md"
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
-                  class="w-full h-full object-cover"
-                />
-              </div>
+          <div class="flex items-center gap-1.5 sm:gap-2">
+            <div onclick="window.setSlideManual(0)"
+              class="thumb-item w-10 h-8 sm:w-12 sm:h-10 rounded-lg overflow-hidden border-2 border-brand-green cursor-pointer opacity-100 transition-all shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1554744512-d6c603f27c54?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                class="w-full h-full object-cover" />
             </div>
-
-            <button
-              id="next-btn"
-              class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-gray flex items-center justify-center text-white hover:bg-brand-green hover:text-black transition-colors cursor-pointer micro-interact"
-            >
-              <i class="ph ph-caret-right text-lg"></i>
-            </button>
-          </div>
-
-          <!-- Tarjeta Negra con Dimensiones Fijas () -->
-          <div
-            class="hidden absolute sm:top-8 md:top-10 md:left-0 lg:top-10 lg:left-10 z-20 p-5 lg:p-6 rounded-tr-[32px] lg:rounded-[32px] w-[260px] h-[205px] sm:w-[280px] sm:h-[215px] sm:flex flex-col justify-between"
-          >
-            <div>
-              <div
-                id="card-code"
-                class="text-3xl font-black tracking-tight mb-0.5"
-              >
-                C45
-              </div>
-              <div
-                id="card-subtitle"
-                class="text-brand-green text-xs font-bold tracking-widest uppercase mb-2"
-              >
-                PRO WRAP
-              </div>
-              <p
-                id="card-desc"
-                class="text-gray-400 text-xs sm:text-sm leading-tight"
-              >
-                Servicio integral para vehículos comerciales. Rotulación de alta
-                calidad.
-              </p>
+            <div onclick="window.setSlideManual(1)"
+              class="thumb-item w-10 h-8 sm:w-12 sm:h-10 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer opacity-50 hover:opacity-100 transition-all shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                class="w-full h-full object-cover" />
             </div>
-            <div>
-              <button
-                class="w-10 h-10 bg-brand-green rounded-full flex items-center justify-center text-black hover:scale-110 transition-transform micro-interact shadow-md cursor-pointer"
-              >
-                <i class="ph ph-arrow-right text-base font-bold"></i>
-              </button>
+            <div onclick="window.setSlideManual(2)"
+              class="thumb-item w-10 h-8 sm:w-12 sm:h-10 rounded-lg overflow-hidden border-2 border-transparent cursor-pointer opacity-50 hover:opacity-100 transition-all shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80"
+                class="w-full h-full object-cover" />
             </div>
           </div>
+
+          <button id="next-btn"
+            class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-brand-gray flex items-center justify-center text-white hover:bg-brand-green hover:text-black transition-colors cursor-pointer micro-interact">
+            <i class="ph ph-caret-right text-lg"></i>
+          </button>
         </div>
-        <!-- Tarjeta Negra sm -->
+
+        <!-- Tarjeta Negra con Dimensiones Fijas () -->
         <div
-          class="sm:hidden w-full mt-8 z-20 lg:p-6 rounded-tr-[32px] flex flex-col justify-between"
-        >
+          class="hidden absolute sm:top-8 md:top-10 md:left-0 lg:top-10 lg:left-10 z-20 p-5 lg:p-6 rounded-tr-[32px] lg:rounded-[32px] w-[260px] h-[205px] sm:w-[280px] sm:h-[215px] sm:flex flex-col justify-between">
           <div>
-            <div
-              id="card-code"
-              class="text-3xl font-black tracking-tight mb-0.5"
-            >
+            <div id="card-code" class="text-3xl font-black tracking-tight mb-0.5">
               C45
             </div>
-            <div
-              id="card-subtitle"
-              class="text-brand-green text-xs font-bold tracking-widest uppercase mb-2"
-            >
+            <div id="card-subtitle" class="text-brand-green text-xs font-bold tracking-widest uppercase mb-2">
               PRO WRAP
             </div>
-            <p
-              id="card-desc"
-              class="text-gray-400 text-xs sm:text-sm leading-tight"
-            >
-              Servicio integral para vehículos comerciales. Rotulación de alta
-              calidad.
+            <p id="card-desc" class="text-gray-400 text-xs sm:text-sm leading-tight">
+              Servicio integral para vehículos comerciales.
+              Rotulación de alta calidad.
             </p>
           </div>
-        </div>
-      </section>
-      <!-- ========================================== -->
-      <!-- SECCIÓN 2: MARQUEE TICKER (Integrado fluidamente) -->
-      <!-- ========================================== -->
-      <section
-        class="mt-8 h-12 lg:h-14 bg-brand-green flex items-center overflow-hidden border-y border-[#111] relative z-20 shadow-[0_-10px_30px_rgba(147,227,43,0.1)]"
-      >
-        <div class="flex whitespace-nowrap animate-marquee items-center">
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >DISEÑO GRÁFICO</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >IMPRESIÓN GRAN FORMATO</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >ROTULACIÓN VEHICULAR</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >LETRAS 3D</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <!-- Loop -->
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >DISEÑO GRÁFICO</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >IMPRESIÓN GRAN FORMATO</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >ROTULACIÓN VEHICULAR</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-          <span
-            class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4"
-            >LETRAS 3D</span
-          >
-          <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
-        </div>
-      </section>
-
-      <!-- ========================================== -->
-      <!-- SECCIÓN 3: CARRUSEL DE SERVICIOS (Restaurado y Adaptado al Tema) -->
-      <!-- ========================================== -->
-      <section
-        id="servicios"
-        class="scroll-mt-20 bg-[#050505] border-b border-white/5 relative mx-8 md:mx-16 lg:mx-24 mt-12"
-      >
-        <div
-          class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none"
-        ></div>
-
-        <div class="max-w-7xl mx-auto relative z-10">
-          <div
-            class="flex flex-col md:flex-row md:items-end justify-between mb-16"
-          >
-            <div>
-              <span
-                class="text-brand-green text-[11px] font-mono tracking-[0.2em] uppercase font-semibold block mb-3"
-                >Especialidades</span
-              >
-              <h2
-                class="text-4xl sm:text-5xl font-bold tracking-tight text-white"
-              >
-                Áreas de <span class="text-brand-green">Trabajo</span>
-              </h2>
-            </div>
-
-            <div class="flex items-center gap-4 mt-6 md:mt-0">
-              <button
-                id="service-prev"
-                class="w-10 h-10 rounded-md border border-white/10 bg-brand-black flex items-center justify-center text-white hover:border-brand-green hover:text-brand-green transition-colors"
-                aria-label="Anterior"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M15 19l-7-7 7-7"
-                  ></path>
-                </svg>
-              </button>
-              <span
-                id="service-indicator"
-                class="text-[12px] font-mono text-gray-500 tracking-[0.2em]"
-                >01 / 03</span
-              >
-              <button
-                id="service-next"
-                class="w-10 h-10 rounded-md border border-white/10 bg-brand-black flex items-center justify-center text-white hover:border-brand-green hover:text-brand-green transition-colors"
-                aria-label="Siguiente"
-              >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1.5"
-                    d="M9 5l7 7-7 7"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div
-            id="service-viewport"
-            class="relative overflow-hidden rounded-xl border border-white/5 bg-brand-black p-8 md:p-16 min-h-170 lg:min-h-100 shadow-2xl"
-          >
-            <div
-              class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-100"
-              data-slide="0"
-            >
-              <div class="lg:col-span-8 space-y-6">
-                <div class="flex items-center gap-4">
-                  <span
-                    class="px-3 py-1 bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest rounded-md"
-                    >01 / ÁREA</span
-                  >
-                  <span
-                    class="text-[11px] font-mono text-brand-green font-medium uppercase tracking-[0.15em]"
-                    >Alta Precisión</span
-                  >
-                </div>
-                <h3
-                  class="text-4xl md:text-5xl font-bold text-white tracking-tight"
-                >
-                  Impresión
-                </h3>
-                <p
-                  class="text-gray-400 text-base md:text-lg leading-relaxed font-normal max-w-xl"
-                >
-                  Impresión láser y Tecnología UV de ultra alta resolución.
-                  Producimos banners gigantes, lonas frontlight y backlight para
-                  campañas masivas.
-                </p>
-                <div class="pt-4">
-                  <button
-                    class="text-sm font-medium text-white hover:text-brand-green flex items-center gap-2 transition-colors"
-                  >
-                    Explorar área <span class="text-brand-green">→</span>
-                  </button>
-                </div>
-              </div>
-              <div class="lg:col-span-4 flex justify-start lg:justify-end">
-                <span
-                  class="text-[8rem] md:text-[12rem] leading-none font-bold text-white/[0.03] tracking-tighter"
-                  >01</span
-                >
-              </div>
-            </div>
-
-            <div
-              class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-0 pointer-events-none"
-              data-slide="1"
-            >
-              <div class="lg:col-span-8 space-y-6">
-                <div class="flex items-center gap-4">
-                  <span
-                    class="px-3 py-1 bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest rounded-md"
-                    >02 / ÁREA</span
-                  >
-                  <span
-                    class="text-[11px] font-mono text-brand-green font-medium uppercase tracking-[0.15em]"
-                    >Identidad Visual</span
-                  >
-                </div>
-                <h3
-                  class="text-4xl md:text-5xl font-bold text-white tracking-tight"
-                >
-                  Diseño Gráfico
-                </h3>
-                <p
-                  class="text-gray-400 text-base md:text-lg leading-relaxed font-normal max-w-xl"
-                >
-                  Desarrollo de branding corporativo, vectorización de logotipos
-                  y preparación técnica de archivos de pre-prensa.
-                </p>
-                <div class="pt-4">
-                  <button
-                    class="text-sm font-medium text-white hover:text-brand-green flex items-center gap-2 transition-colors"
-                  >
-                    Explorar área <span class="text-brand-green">→</span>
-                  </button>
-                </div>
-              </div>
-              <div class="lg:col-span-4 flex justify-start lg:justify-end">
-                <span
-                  class="text-[8rem] md:text-[12rem] leading-none font-bold text-white/[0.03] tracking-tighter"
-                  >02</span
-                >
-              </div>
-            </div>
-
-            <div
-              class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-0 pointer-events-none"
-              data-slide="2"
-            >
-              <div class="lg:col-span-8 space-y-6">
-                <div class="flex items-center gap-4">
-                  <span
-                    class="px-3 py-1 bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest rounded-md"
-                    >03 / ÁREA</span
-                  >
-                  <span
-                    class="text-[11px] font-mono text-brand-green font-medium uppercase tracking-[0.15em]"
-                    >Vehicular y Arquitectónica</span
-                  >
-                </div>
-                <h3
-                  class="text-4xl md:text-5xl font-bold text-white tracking-tight"
-                >
-                  Rotulación
-                </h3>
-                <p
-                  class="text-gray-400 text-base md:text-lg leading-relaxed font-normal max-w-xl"
-                >
-                  Instalación experta de vinilos decorativos, rotulación de
-                  flotillas comerciales, cajas de luz y letras 3D corpóreas.
-                </p>
-                <div class="pt-4">
-                  <button
-                    class="text-sm font-medium text-white hover:text-brand-green flex items-center gap-2 transition-colors"
-                  >
-                    Explorar área <span class="text-brand-green">→</span>
-                  </button>
-                </div>
-              </div>
-              <div class="lg:col-span-4 flex justify-start lg:justify-end">
-                <span
-                  class="text-[8rem] md:text-[12rem] leading-none font-bold text-white/[0.03] tracking-tighter"
-                  >03</span
-                >
-              </div>
-            </div>
+          <div>
+            <button
+              class="w-10 h-10 bg-brand-green rounded-full flex items-center justify-center text-black hover:scale-110 transition-transform micro-interact shadow-md cursor-pointer">
+              <i class="ph ph-arrow-right text-base font-bold"></i>
+            </button>
           </div>
         </div>
-      </section>
-
-      <!-- ========================================== -->
-      <!-- SECCIÓN 4: GALERÍA DE TRABAJOS -->
-      <!-- ========================================== -->
-      <section
-        id="galeria"
-        class="scroll-mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 mt-8"
-      >
-        <div class="grid gap-4">
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="grid gap-4">
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="grid gap-4">
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-        <div class="grid gap-4">
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg"
-              alt=""
-            />
-          </div>
-          <div>
-            <img
-              class="h-auto max-w-full rounded-base"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg"
-              alt=""
-            />
-          </div>
-        </div>
-      </section>
-
-      <!-- ========================================== -->
-      <!-- SECCIÓN 5: CONTACTO (Restaurada) -->
-      <!-- ========================================== -->
-      <section id="contacto" class="py-24 bg-brand-black scroll-mt-20">
-        <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <span
-            class="text-brand-green text-[11px] font-mono tracking-[0.2em] uppercase block font-semibold"
-            >// COTIZA TU PROYECTO</span
-          >
-          <h2
-            class="text-4xl sm:text-6xl font-bold text-white tracking-tighter leading-tight"
-          >
-            Comienza a trabajar con <br /><span class="text-brand-green"
-              >Xtreme Art</span
-            >
-          </h2>
-          <p class="text-gray-400 text-lg max-w-xl mx-auto mb-10">
-            Soporte técnico directo, tiempos de entrega récord y calidad
-            insuperable.
-          </p>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 text-left">
-            <a
-              href="https://wa.me/50626633232"
-              target="_blank"
-              class="p-8 rounded-xl bg-brand-black border border-white/5 hover:border-brand-green/30 transition-colors group relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <div class="relative z-10 flex justify-between mb-6">
-                <span
-                  class="text-[11px] font-mono text-gray-500 tracking-[0.1em] uppercase"
-                  >Respuesta Rápida</span
-                >
-                <span
-                  class="text-brand-green group-hover:translate-x-1 transition-transform"
-                  >→</span
-                >
-              </div>
-              <h3
-                class="relative z-10 text-2xl font-bold text-white group-hover:text-brand-green transition-colors"
-              >
-                WhatsApp
-              </h3>
-            </a>
-            <a
-              href="mailto:info@xtremeart.com"
-              class="p-8 rounded-xl bg-brand-black border border-white/5 hover:border-brand-green/30 transition-colors group relative overflow-hidden"
-            >
-              <div
-                class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"
-              ></div>
-              <div class="relative z-10 flex justify-between mb-6">
-                <span
-                  class="text-[11px] font-mono text-gray-500 tracking-[0.1em] uppercase"
-                  >Formal</span
-                >
-                <span
-                  class="text-white group-hover:translate-x-1 transition-transform"
-                  >→</span
-                >
-              </div>
-              <h3 class="relative z-10 text-2xl font-bold text-white">
-                Correo Electrónico
-              </h3>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- FOOTER -->
-    <footer
-      class="bg-brand-black border-t border-white/5 py-8 px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4"
-    >
-      <div class="flex items-center gap-4">
-        <img
-          src="./src/logo.png"
-          alt="Logo XTREME ART"
-          class="h-6 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all"
-        />
       </div>
-      <p class="text-[11px] text-gray-600 font-medium">
-        © 2026 XTREME ART. Todos los derechos reservados.
-      </p>
-      <a
-        href="#top"
-        data-back-to-top
-        class="text-[11px] font-medium text-brand-green hover:text-white transition-colors"
-        >Subir ↑</a
-      >
-    </footer>
+      <!-- Tarjeta Negra sm -->
+      <div class="sm:hidden w-full mt-8 z-20 lg:p-6 rounded-tr-[32px] flex flex-col justify-between">
+        <div>
+          <div id="card-code-sm" class="text-3xl font-black tracking-tight mb-0.5">
+            C45
+          </div>
+          <div id="card-subtitle-sm" class="text-brand-green text-xs font-bold tracking-widest uppercase mb-2">
+            PRO WRAP
+          </div>
+          <p id="card-desc-sm" class="text-gray-400 text-xs sm:text-sm leading-tight">
+            Servicio integral para vehículos comerciales.
+            Rotulación de alta calidad.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- ========================================== -->
+    <!-- SECCIÓN 2: MARQUEE TICKER (Integrado fluidamente) -->
+    <!-- ========================================== -->
+    <section
+      class="mt-8 h-12 lg:h-14 bg-brand-green flex items-center overflow-hidden border-y border-[#111] relative z-20 shadow-[0_-10px_30px_rgba(147,227,43,0.1)]">
+      <div class="flex whitespace-nowrap animate-marquee items-center">
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">DISEÑO
+          GRÁFICO</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">IMPRESIÓN
+          GRAN FORMATO</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">ROTULACIÓN
+          VEHICULAR</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">LETRAS
+          3D</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <!-- Loop -->
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">DISEÑO
+          GRÁFICO</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">IMPRESIÓN
+          GRAN FORMATO</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">ROTULACIÓN
+          VEHICULAR</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+        <span class="text-black font-bold uppercase text-sm lg:text-base tracking-[0.15em] font-mono mx-4">LETRAS
+          3D</span>
+        <span class="text-black/40 font-bold mx-2 text-xs">◆</span>
+      </div>
+    </section>
 
-    <!-- Integración de Framer (Motion One) y Lógica de Carrusel Interactivo/Automático -->
-    <script type="module">
-      import {
-        animate,
-        spring,
-      } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
+    <!-- ========================================== -->
+    <!-- SECCIÓN 3: CARRUSEL DE SERVICIOS (Restaurado y Adaptado al Tema) -->
+    <!-- ========================================== -->
+    <section id="servicios"
+      class="scroll-mt-20 bg-brand-black border-b-4 border-brand-green rounded-xl relative mx-8 md:mx-16 lg:mx-24 mt-12">
+      <div
+        class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.02)_0%,transparent_70%)] pointer-events-none">
+      </div>
 
-      // Animación de entrada inicial estilo Framer
-      animate(
-        "#main-title",
-        { opacity: [0, 1], y: [30, 0] },
-        { duration: 0.8, easing: spring() },
-      );
+      <div class="max-w-7xl mx-auto relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+          <div>
+            <span
+              class="text-brand-green text-[11px] font-mono tracking-[0.2em] uppercase font-semibold block mb-3">Especialidades</span>
+            <h2 class="text-4xl sm:text-5xl font-bold tracking-tight text-white">
+              Áreas de
+              <span class="text-brand-green">Trabajo</span>
+            </h2>
+          </div>
 
-      const smoothScrollToTop = () => {
-        const start = window.scrollY || document.documentElement.scrollTop || 0;
-        const duration = 700;
-        const startTime = performance.now();
+          <div class="flex items-center gap-4 mt-6 md:mt-0">
+            <button id="service-prev"
+              class="w-10 h-10 rounded-md border border-white/10 bg-brand-black flex items-center justify-center text-white hover:border-brand-green hover:text-brand-green transition-colors"
+              aria-label="Anterior">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"></path>
+              </svg>
+            </button>
+            <span id="service-indicator" class="text-[12px] font-mono text-gray-500 tracking-[0.2em]">01 / 03</span>
+            <button id="service-next"
+              class="w-10 h-10 rounded-md border border-white/10 bg-brand-black flex items-center justify-center text-white hover:border-brand-green hover:text-brand-green transition-colors"
+              aria-label="Siguiente">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
 
-        const animateScroll = (now) => {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          window.scrollTo(0, start + (0 - start) * eased);
+        <div id="service-viewport"
+          class="relative overflow-hidden rounded-xl border border-white/5 bg-brand-black p-8 md:p-16 min-h-170 lg:min-h-100 shadow-2xl">
+          <div
+            class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-100"
+            data-slide="0">
+            <div class="lg:col-span-8 space-y-4">
+              <div class="flex items-center gap-4">
+                <span
+                  class="px-3 py-1 bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest rounded-md">01
+                  / ÁREA</span>
+                <span class="text-[11px] font-mono text-brand-green font-medium uppercase tracking-[0.15em]">Alta
+                  Precisión</span>
+              </div>
+              <h3 class="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                Impresión
+              </h3>
+              <p class="text-gray-400 text-base md:text-lg leading-relaxed font-normal max-w-xl">
+                Impresión láser y Tecnología UV de ultra
+                alta resolución. Producimos banners
+                gigantes, lonas frontlight y backlight para
+                campañas masivas.
+              </p>
+             <!-- <div class="pt-2">
+                <button
+                  class="text-sm font-medium text-white hover:text-brand-green flex items-center gap-2 transition-colors">
+                  Explorar área
+                  <span class="text-brand-green">→</span>
+                </button>
+              </div> -->
+            </div>
+            <div class="lg:col-span-4 flex justify-start lg:justify-end">
+              <span
+                class="text-[8rem] md:text-[12rem] leading-none font-bold text-brand-border tracking-tighter">01</span>
+            </div>
+          </div>
 
-          if (progress < 1) {
-            requestAnimationFrame(animateScroll);
-          }
-        };
+          <div
+            class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-0 pointer-events-none"
+            data-slide="1">
+            <div class="lg:col-span-8 space-y-6">
+              <div class="flex items-center gap-4">
+                <span
+                  class="px-3 py-1 bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest rounded-md">02
+                  / ÁREA</span>
+                <span class="text-[11px] font-mono text-brand-green font-medium uppercase tracking-[0.15em]">Identidad
+                  Visual</span>
+              </div>
+              <h3 class="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                Diseño Gráfico
+              </h3>
+              <p class="text-gray-400 text-base md:text-lg leading-relaxed font-normal max-w-xl">
+                Desarrollo de branding corporativo,
+                vectorización de logotipos y preparación
+                técnica de archivos de pre-prensa.
+              </p>
+             <!-- <div class="pt-2">
+                <button
+                  class="text-sm font-medium text-white hover:text-brand-green flex items-center gap-2 transition-colors">
+                  Explorar área
+                  <span class="text-brand-green">→</span>
+                </button>
+              </div> -->
+            </div>
+            <div class="lg:col-span-4 flex justify-start lg:justify-end">
+              <span
+                class="text-[8rem] md:text-[12rem] leading-none font-bold text-brand-border tracking-tighter">02</span>
+            </div>
+          </div>
 
-        requestAnimationFrame(animateScroll);
-      };
+          <div
+            class="service-slide absolute inset-0 p-8 md:p-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center opacity-0 pointer-events-none"
+            data-slide="2">
+            <div class="lg:col-span-8 space-y-6">
+              <div class="flex items-center gap-4">
+                <span
+                  class="px-3 py-1 bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest rounded-md">03
+                  / ÁREA</span>
+                <span class="text-[11px] font-mono text-brand-green font-medium uppercase tracking-[0.15em]">Vehicular y
+                  comercial</span>
+              </div>
+              <h3 class="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                Rotulación
+              </h3>
+              <p class="text-gray-400 text-base md:text-lg leading-relaxed font-normal max-w-xl">
+                Instalación experta de vinilos decorativos,
+                rotulación de flotillas comerciales, cajas
+                de luz y letras 3D corpóreas.
+              </p>
+            <!--  <div class="pt-2">
+                <button
+                  class="text-sm font-medium text-white hover:text-brand-green flex items-center gap-2 transition-colors">
+                  Explorar área
+                  <span class="text-brand-green">→</span>
+                </button>
+            </div> -->
+            </div>
+            <div class="lg:col-span-4 flex justify-start lg:justify-end">
+              <span
+                class="text-[8rem] md:text-[12rem] leading-none font-bold text-brand-border tracking-tighter">03</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      const backToTopLinks = document.querySelectorAll(
-        'a[href="#top"], a[data-back-to-top], a[href="#inicio"]',
-      );
+    <!-- ========================================== -->
+    <!-- SECCIÓN 4: GALERÍA DE TRABAJOS -->
+    <!-- ========================================== -->
+    <section id="galeria" class="scroll-mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+      <div class="grid gap-4">
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" />
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" />
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="" />
+        </div>
+      </div>
+      <div class="grid gap-4">
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="" />
+        </div>
+        <div>
+          <img class="h-auto max-w-full rounded-base"
+            src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt="" />
+        </div>
+      </div>
+    </section>
 
-      backToTopLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-          const href = link.getAttribute("href");
-          if (href === "#top" || href === "#inicio") {
-            event.preventDefault();
-            smoothScrollToTop();
-          }
-        });
-      });
+    <!-- ========================================== -->
+    <!-- SECCIÓN 5: CONTACTO (Restaurada) -->
+    <!-- ========================================== -->
+    <section id="contacto" class="py-24 bg-brand-black scroll-mt-20">
+      <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
+        <span class="text-brand-green text-[11px] font-mono tracking-[0.2em] uppercase block font-semibold">// COTIZA TU
+          PROYECTO</span>
+        <h2 class="text-4xl sm:text-6xl font-bold text-white tracking-tighter leading-tight">
+          Comienza a trabajar con <br /><span class="text-brand-green">Xtreme Art</span>
+        </h2>
+        <p class="text-gray-400 text-lg max-w-xl mx-auto mb-10">
+          Soporte técnico directo, tiempos de entrega récord y
+          calidad insuperable.
+        </p>
 
-      // Microinteracciones de botones estilo Framer
-      const interactables = document.querySelectorAll(".micro-interact");
-      interactables.forEach((el) => {
-        el.addEventListener("mouseenter", () => {
-          animate(el, { scale: 1.05 }, { duration: 0.2, easing: "ease-out" });
-        });
-        el.addEventListener("mouseleave", () => {
-          animate(el, { scale: 1 }, { duration: 0.2, easing: "ease-out" });
-        });
-        el.addEventListener("mousedown", () => {
-          animate(el, { scale: 0.95 }, { duration: 0.1 });
-        });
-        el.addEventListener("mouseup", () => {
-          animate(el, { scale: 1.05 }, { duration: 0.1 });
-        });
-      });
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12 text-left">
+          <a href="https://wa.me/50626633232" target="_blank"
+            class="p-8 rounded-xl bg-brand-black border border-white/5 hover:border-brand-green/30 transition-colors group relative overflow-hidden">
+            <div class="absolute inset-0 bg-brand-green/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="relative z-10 flex justify-between mb-6">
+              <span class="text-[11px] font-mono text-gray-500 tracking-[0.1em] uppercase">Respuesta Rápida</span>
+              <span class="text-brand-green group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <h3 class="relative z-10 text-2xl font-bold text-white group-hover:text-brand-green transition-colors">
+              WhatsApp
+            </h3>
+          </a>
+          <a href="mailto:info@xtremeart.com"
+            class="p-8 rounded-xl bg-brand-black border border-white/5 hover:border-brand-green/30 transition-colors group relative overflow-hidden">
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div class="relative z-10 flex justify-between mb-6">
+              <span class="text-[11px] font-mono text-gray-500 tracking-[0.1em] uppercase">Formal</span>
+              <span class="text-white group-hover:translate-x-1 transition-transform">→</span>
+            </div>
+            <h3 class="relative z-10 text-2xl font-bold text-white">
+              Correo Electrónico
+            </h3>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- FOOTER -->
+  <footer
+    class="bg-brand-black border-t border-white/5 py-8 px-6 lg:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-4">
+      <img src="./src/logo.png" alt="Logo XTREME ART"
+        class="h-6 w-auto grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all" />
+    </div>
+    <p class="text-[11px] text-gray-600 font-medium">
+      © 2026 XTREME ART. Todos los derechos reservados.
+    </p>
+    <a href="#top" data-back-to-top
+      class="text-[11px] font-medium text-brand-green hover:text-white transition-colors">Subir ↑</a>
+  </footer>
 
-      // Menú móvil con Motion
-      const menuToggle = document.getElementById("menu-toggle");
-      const mobileMenu = document.getElementById("mobile-menu");
-      let mobileMenuOpen = false;
+  <!-- Integración de Framer (Motion One) y Lógica de Carrusel Interactivo/Automático -->
+  <script type="module">
+            import {
+                animate,
+                spring
+            } from "https://cdn.jsdelivr.net/npm/motion@latest/+esm";
 
-      const closeMobileMenu = () => {
-        mobileMenuOpen = false;
-        menuToggle.setAttribute("aria-expanded", "false");
-        animate(
-          mobileMenu,
-          {
-            opacity: [1, 0],
-            height: [mobileMenu.scrollHeight, 0],
-            y: [0, -12],
-          },
-          { duration: 0.24, easing: "ease-in-out" },
-        );
-        mobileMenu.style.pointerEvents = "none";
-      };
+            // ==========================================
+            // ANIMACIÓN DE ENTRADA (Logo X con Framer/Motion)
+            // ==========================================
+            const intro = document.getElementById("intro");
+            const introSvg = document.getElementById("intro-svg");
+            const introOutline = document.getElementById("intro-x-outline");
+            const introFill = document.getElementById("intro-x-fill");
 
-      const openMobileMenu = () => {
-        mobileMenuOpen = true;
-        menuToggle.setAttribute("aria-expanded", "true");
-        mobileMenu.style.pointerEvents = "auto";
-        animate(
-          mobileMenu,
-          {
-            opacity: [0, 1],
-            height: [0, mobileMenu.scrollHeight],
-            y: [-12, 0],
-          },
-          { duration: 0.28, easing: "ease-out" },
-        );
-      };
+            const revealMainTitle = () => {
+                animate(
+                    "#main-title",
+                    { opacity: [0, 1], y: [30, 0] },
+                    { duration: 0.8, easing: spring() }
+                );
+            };
 
-      menuToggle.addEventListener("click", () => {
-        mobileMenuOpen ? closeMobileMenu() : openMobileMenu();
-      });
+            const prefersReducedMotion =
+                window.matchMedia &&
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      mobileMenu.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", closeMobileMenu);
-      });
+            const playIntro = async () => {
+                if (prefersReducedMotion || !intro) {
+                    if (intro) intro.style.display = "none";
+                    document.body.classList.remove("intro-active");
+                    const mainTitle = document.getElementById("main-title");
+                    if (mainTitle) mainTitle.style.opacity = "1";
+                    return;
+                }
 
-      // Carrusel de servicios con Motion
-      const serviceSlides = [...document.querySelectorAll(".service-slide")];
-      const servicePrev = document.getElementById("service-prev");
-      const serviceNext = document.getElementById("service-next");
-      const serviceIndicator = document.getElementById("service-indicator");
-      let activeServiceIndex = 0;
+                document.body.classList.add("intro-active");
 
-      function renderServiceSlide(index) {
-        activeServiceIndex =
-          (index + serviceSlides.length) % serviceSlides.length;
+                // Fase 1: las líneas verdes dibujan el contorno de la X
+                await animate(
+                    introOutline,
+                    { strokeDashoffset: [1, 0] },
+                    { duration: 1.4, easing: "ease-in-out" }
+                ).finished;
 
-        serviceSlides.forEach((slide, slideIndex) => {
-          const isActive = slideIndex === activeServiceIndex;
-          slide.style.pointerEvents = isActive ? "auto" : "none";
+                // Fase 2: la X se rellena del mismo verde
+                await animate(
+                    introFill,
+                    { opacity: [0, 1] },
+                    { duration: 0.45, easing: "ease-out" }
+                ).finished;
+                await animate(
+                    introSvg,
+                    { scale: [1, 1.05] },
+                    { duration: 0.22, easing: "ease-out" }
+                ).finished;
 
-          animate(
-            slide,
-            {
-              opacity: isActive ? [0, 1] : [1, 0],
-              x: isActive ? [18, 0] : [0, -18],
-            },
-            { duration: 0.45, easing: "ease-out" },
-          );
-        });
+                // Fase 3: la X se agranda y sale del viewport revelando el sitio
+                await Promise.all([
+                    animate(
+                        introSvg,
+                        { scale: [1.05, 14], opacity: [1, 0] },
+                        { duration: 0.75, easing: [0.76, 0, 0.24, 1] }
+                    ).finished,
+                    animate(
+                        intro,
+                        { opacity: [1, 0] },
+                        { duration: 0.75, easing: "ease-out" }
+                    ).finished
+                ]);
 
-        serviceIndicator.textContent = `${String(activeServiceIndex + 1).padStart(2, "0")} / ${String(serviceSlides.length).padStart(2, "0")}`;
-      }
+                intro.style.display = "none";
+                document.body.classList.remove("intro-active");
 
-      servicePrev.addEventListener("click", () =>
-        renderServiceSlide(activeServiceIndex - 1),
-      );
-      serviceNext.addEventListener("click", () =>
-        renderServiceSlide(activeServiceIndex + 1),
-      );
+                revealMainTitle();
+            };
 
-      // Datos del Carrusel
-      const slides = [
-        {
-          code: "C45",
-          subtitle: "PRO WRAP",
-          desc: "Servicio integral para vehículos comerciales. Rotulación de alta calidad.",
-          image: "./src/Wrap.png",
-        },
-        {
-          code: "P01",
-          subtitle: "GRAN FORMATO",
-          desc: "Impresión digital de máxima definición en lonas, vinilos y soportes rígidos.",
-          image:
-            "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-        },
-        {
-          code: "D02",
-          subtitle: "BRANDING & ARTES",
-          desc: "Creación de identidad visual corporativa y optimización de artes finales.",
-          image:
-            "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-        },
-      ];
+            playIntro();
 
-      let currentSlide = 0;
-      let slideInterval;
-      const intervalTime = 8000;
+            const smoothScrollToTop = () => {
+                const start =
+                    window.scrollY || document.documentElement.scrollTop || 0;
+                const duration = 700;
+                const startTime = performance.now();
 
-      function updateSlide(index) {
-        currentSlide = index;
-        const slide = slides[currentSlide];
-        const heroImg = document.getElementById("hero-image");
+                const animateScroll = now => {
+                    const progress = Math.min((now - startTime) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    window.scrollTo(0, start + (0 - start) * eased);
 
-        const fadeOut = animate(
-          heroImg,
-          { opacity: [1, 0], scale: [1, 0.97] },
-          { duration: 0.24, easing: "ease-in-out" },
-        );
+                    if (progress < 1) {
+                        requestAnimationFrame(animateScroll);
+                    }
+                };
 
-        fadeOut.finished.then(() => {
-          heroImg.src = slide.image;
-          animate(
-            heroImg,
-            { opacity: [0, 1], scale: [0.97, 1] },
-            { duration: 0.38, easing: "ease-out" },
-          );
-        });
+                requestAnimationFrame(animateScroll);
+            };
 
-        document.getElementById("card-code").innerText = slide.code;
-        document.getElementById("card-subtitle").innerText = slide.subtitle;
-        document.getElementById("card-desc").innerText = slide.desc;
+            const backToTopLinks = document.querySelectorAll(
+                'a[href="#top"], a[data-back-to-top], a[href="#inicio"]'
+            );
 
-        // Actualizar miniaturas
-        const thumbs = document.querySelectorAll(".thumb-item");
-        thumbs.forEach((t, i) => {
-          if (i === currentSlide) {
-            t.classList.remove("border-transparent", "opacity-50");
-            t.classList.add("border-brand-green", "opacity-100");
-          } else {
-            t.classList.remove("border-brand-green", "opacity-100");
-            t.classList.add("border-transparent", "opacity-50");
-          }
-        });
-      }
+            backToTopLinks.forEach(link => {
+                link.addEventListener("click", event => {
+                    const href = link.getAttribute("href");
+                    if (href === "#top" || href === "#inicio") {
+                        event.preventDefault();
+                        smoothScrollToTop();
+                    }
+                });
+            });
 
-      function nextSlide() {
-        let newIndex = currentSlide + 1;
-        if (newIndex >= slides.length) newIndex = 0;
-        updateSlide(newIndex);
-      }
+            // Microinteracciones de botones estilo Framer
+            const interactables = document.querySelectorAll(".micro-interact");
+            interactables.forEach(el => {
+                el.addEventListener("mouseenter", () => {
+                    animate(
+                        el,
+                        { scale: 1.05 },
+                        { duration: 0.2, easing: "ease-out" }
+                    );
+                });
+                el.addEventListener("mouseleave", () => {
+                    animate(
+                        el,
+                        { scale: 1 },
+                        { duration: 0.2, easing: "ease-out" }
+                    );
+                });
+                el.addEventListener("mousedown", () => {
+                    animate(el, { scale: 0.95 }, { duration: 0.1 });
+                });
+                el.addEventListener("mouseup", () => {
+                    animate(el, { scale: 1.05 }, { duration: 0.1 });
+                });
+            });
 
-      function startAutoPlay() {
-        slideInterval = setInterval(nextSlide, intervalTime);
-      }
+            // Menú móvil con Motion
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            let mobileMenuOpen = false;
 
-      function resetAutoPlay() {
-        clearInterval(slideInterval);
-        startAutoPlay();
-      }
+            const closeMobileMenu = () => {
+                mobileMenuOpen = false;
+                menuToggle.setAttribute("aria-expanded", "false");
+                animate(
+                    mobileMenu,
+                    {
+                        opacity: [1, 0],
+                        height: [mobileMenu.scrollHeight, 0],
+                        y: [0, -12]
+                    },
+                    { duration: 0.24, easing: "ease-in-out" }
+                );
+                mobileMenu.style.pointerEvents = "none";
+            };
 
-      window.setSlideManual = function (index) {
-        updateSlide(index);
-        resetAutoPlay();
-      };
+            const openMobileMenu = () => {
+                mobileMenuOpen = true;
+                menuToggle.setAttribute("aria-expanded", "true");
+                mobileMenu.style.pointerEvents = "auto";
+                animate(
+                    mobileMenu,
+                    {
+                        opacity: [0, 1],
+                        height: [0, mobileMenu.scrollHeight],
+                        y: [-12, 0]
+                    },
+                    { duration: 0.28, easing: "ease-out" }
+                );
+            };
 
-      document.getElementById("prev-btn").addEventListener("click", () => {
-        let newIndex = currentSlide - 1;
-        if (newIndex < 0) newIndex = slides.length - 1;
-        updateSlide(newIndex);
-        resetAutoPlay();
-      });
+            menuToggle.addEventListener("click", () => {
+                mobileMenuOpen ? closeMobileMenu() : openMobileMenu();
+            });
 
-      document.getElementById("next-btn").addEventListener("click", () => {
-        nextSlide();
-        resetAutoPlay();
-      });
+            mobileMenu.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", closeMobileMenu);
+            });
 
-      startAutoPlay();
-    </script>
-  </body>
+            // Carrusel de servicios con Motion
+            const serviceSlides = [
+                ...document.querySelectorAll(".service-slide")
+            ];
+            const servicePrev = document.getElementById("service-prev");
+            const serviceNext = document.getElementById("service-next");
+            const serviceIndicator =
+                document.getElementById("service-indicator");
+            let activeServiceIndex = 0;
+
+            function renderServiceSlide(index) {
+                activeServiceIndex =
+                    (index + serviceSlides.length) % serviceSlides.length;
+
+                serviceSlides.forEach((slide, slideIndex) => {
+                    const isActive = slideIndex === activeServiceIndex;
+                    slide.style.pointerEvents = isActive ? "auto" : "none";
+
+                    animate(
+                        slide,
+                        {
+                            opacity: isActive ? [0, 1] : [1, 0],
+                            x: isActive ? [18, 0] : [0, -18]
+                        },
+                        { duration: 0.45, easing: "ease-out" }
+                    );
+                });
+                l;
+
+                serviceIndicator.textContent = `${String(activeServiceIndex + 1).padStart(2, "0")} / ${String(serviceSlides.length).padStart(2, "0")}`;
+            }
+
+            servicePrev.addEventListener("click", () =>
+                renderServiceSlide(activeServiceIndex - 1)
+            );
+            serviceNext.addEventListener("click", () =>
+                renderServiceSlide(activeServiceIndex + 1)
+            );
+
+            // Datos del Carrusel
+            const slides = [
+                {
+                    code: "C45",
+                    subtitle: "PRO WRAP",
+                    desc: "Servicio integral para vehículos comerciales. Rotulación de alta calidad.",
+                    image: "./src/Wrap.png"
+                },
+                {
+                    code: "P01",
+                    subtitle: "GRAN FORMATO",
+                    desc: "Impresión digital de máxima definición en lonas, vinilos y soportes rígidos.",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                },
+                {
+                    code: "D02",
+                    subtitle: "BRANDING & ARTES",
+                    desc: "Creación de identidad visual corporativa y optimización de artes finales.",
+                    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                }
+            ];
+
+            let currentSlide = 0;
+            let slideInterval;
+            const intervalTime = 8000;
+
+            function updateSlide(index) {
+                currentSlide = index;
+                const slide = slides[currentSlide];
+                const heroImg = document.getElementById("hero-image");
+
+                const fadeOut = animate(
+                    heroImg,
+                    { opacity: [1, 0], scale: [1, 0.97] },
+                    { duration: 0.24, easing: "ease-in-out" }
+                );
+
+                fadeOut.finished.then(() => {
+                    heroImg.src = slide.image;
+                    animate(
+                        heroImg,
+                        { opacity: [0, 1], scale: [0.97, 1] },
+                        { duration: 0.38, easing: "ease-out" }
+                    );
+                });
+
+                document.getElementById("card-code").innerText = slide.code;
+                document.getElementById("card-subtitle").innerText =
+                    slide.subtitle;
+                document.getElementById("card-desc").innerText = slide.desc;
+
+                document.getElementById("card-code-sm").innerText = slide.code;
+                document.getElementById("card-subtitle-sm").innerText =
+                    slide.subtitle;
+                document.getElementById("card-desc-sm").innerText = slide.desc;
+
+                // Actualizar miniaturas
+                const thumbs = document.querySelectorAll(".thumb-item");
+                thumbs.forEach((t, i) => {
+                    if (i === currentSlide) {
+                        t.classList.remove("border-transparent", "opacity-50");
+                        t.classList.add("border-brand-green", "opacity-100");
+                    } else {
+                        t.classList.remove("border-brand-green", "opacity-100");
+                        t.classList.add("border-transparent", "opacity-50");
+                    }
+                });
+            }
+
+            function nextSlide() {
+                let newIndex = currentSlide + 1;
+                if (newIndex >= slides.length) newIndex = 0;
+                updateSlide(newIndex);
+            }
+
+            function startAutoPlay() {
+                slideInterval = setInterval(nextSlide, intervalTime);
+            }
+
+            function resetAutoPlay() {
+                clearInterval(slideInterval);
+                startAutoPlay();
+            }
+
+            window.setSlideManual = function (index) {
+                updateSlide(index);
+                resetAutoPlay();
+            };
+
+            document
+                .getElementById("prev-btn")
+                .addEventListener("click", () => {
+                    let newIndex = currentSlide - 1;
+                    if (newIndex < 0) newIndex = slides.length - 1;
+                    updateSlide(newIndex);
+                    resetAutoPlay();
+                });
+
+            document
+                .getElementById("next-btn")
+                .addEventListener("click", () => {
+                    nextSlide();
+                    resetAutoPlay();
+                });
+
+            startAutoPlay();
+        </script>
+</body>
+
 </html>
