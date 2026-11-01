@@ -371,3 +371,343 @@
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   FASE 0-1: Awwwards enhancements
+   (fondo WebGL, barra de progreso, grano, cursor, text-reveal, scrollspy)
+   ========================================================================== */
+
+/* Fondo WebGL (capa fija detrás de todo el contenido) */
+#webgl-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  /* Fallback CSS (móvil / sin WebGL): halo verde sutil sobre negro */
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(147, 227, 43, 0.10), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 110%, rgba(147, 227, 43, 0.07), transparent 60%),
+    var(--color-brand-black);
+}
+
+#webgl-bg canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Contenido por encima del fondo WebGL */
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* Barra de progreso de scroll */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 10000;
+  pointer-events: none;
+}
+
+#scroll-progress-bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--color-brand-green);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/* Grano fílmico global */
+#grain {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9990;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+
+/* Cursor custom (punto + anillo) */
+#cursor-dot,
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+  pointer-events: none;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+#cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--color-brand-green);
+}
+
+#cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid rgba(147, 227, 43, 0.55);
+  transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#cursor-ring.is-active {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-color: var(--color-brand-green);
+}
+
+/* Ocultar cursor custom en táctil */
+@media (hover: none), (pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none;
+  }
+}
+
+/* Ocultar cursor nativo cuando el custom está activo */
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor,
+  body.custom-cursor * {
+    cursor: none;
+  }
+}
+
+/* Text reveal por palabra (máscara) */
+[data-reveal] .reveal-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+[data-reveal] .reveal-word-inner {
+  display: inline-block;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.text-reveal-ready [data-reveal] .reveal-word-inner {
+  transform: translateY(120%);
+}
+
+.text-reveal-ready [data-reveal].is-revealed .reveal-word-inner {
+  transform: translateY(0);
+}
+
+/* Scrollspy: enlace de sección activo */
+#site-header nav a.is-active {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   FASE 3: Micro-interacciones
+   ========================================================================== */
+
+.shine {
+  overflow: hidden;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+
+.shine:hover::after {
+  animation: shine-sweep 0.85s ease forwards;
+}
+
+@keyframes shine-sweep {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+#hero-cta {
+  transition-property: filter, translate, scale;
+}
+
+.marquee-word {
+  color: transparent;
+  -webkit-text-stroke: 1px #000;
+  transition: color 0.35s ease;
+}
+
+#MARQUEE:hover .marquee-word {
+  color: #000;
+}
+
+#MARQUEE:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.gallery-caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 1.5rem 1.25rem 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.82), transparent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+  pointer-events: none;
+}
+
+.gallery-card .gallery-img {
+  transition: scale 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.55s ease;
+  filter: grayscale(0.25) contrast(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-card:hover .gallery-img {
+    scale: 1.06;
+    filter: grayscale(0) contrast(1.05) saturate(1.05);
+  }
+
+  .gallery-card:hover .gallery-caption {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+#site-header nav a {
+  position: relative;
+}
+
+#site-header nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 100%;
+  height: 2px;
+  background: var(--color-brand-green);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#site-header nav a:hover::after,
+#site-header nav a.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   FASE 4: Storytelling
+   ========================================================================== */
+
+.manifesto-line {
+  margin: 0;
+}
+
+.manifesto-word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.manifesto-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-brand-green);
+}
+
+.big-type {
+  display: inline-block;
+  will-change: clip-path;
+}
+
+.process-step {
+  position: relative;
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1rem;
+  background-color: var(--color-brand-panel);
+  opacity: 0.42;
+  transition: opacity 0.45s ease, border-color 0.45s ease, background-color 0.45s ease;
+}
+
+.process-step-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-brand-green);
+  margin-bottom: 0.6rem;
+}
+
+.process-step h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: color 0.45s ease;
+}
+
+.process-step p {
+  margin: 0.5rem 0 0;
+  color: #9ca3af;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.process-step.is-active {
+  opacity: 1;
+  border-color: rgba(147, 227, 43, 0.35);
+  background-color: #0e120d;
+}
+
+.process-step.is-active h3 {
+  color: var(--color-brand-green);
+}
+
+@media (min-width: 768px) {
+  .process-step {
+    padding: 2rem 2.25rem;
+  }
+
+  .process-step h3 {
+    font-size: 1.9rem;
+  }
+}
+
+/* ==========================================================================
+   FASE 5: Polish (accesibilidad, reduced-motion global, foco)
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+#site-header a:focus-visible {
+  outline: 2px solid var(--color-brand-green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
